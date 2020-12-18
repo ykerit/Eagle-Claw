@@ -1,8 +1,10 @@
 #pragma once
 
-#include <spdlog/spdlog.h>
+#include "EagleClaw/Core/Base.h"
 
-#include "Base.h"
+#pragma warning(push, 0)
+#include <spdlog/spdlog.h>
+#pragma warning(pop)
 
 namespace EagleClaw {
 class Log {

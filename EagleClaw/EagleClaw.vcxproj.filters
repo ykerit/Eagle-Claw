@@ -1193,6 +1193,9 @@
     <ClCompile Include="src\EagleClaw\Core\Application.cpp">
       <Filter>src\EagleClaw\Core</Filter>
     </ClCompile>
+    <ClCompile Include="src\EagleClaw\Core\Base.cpp">
+      <Filter>src\EagleClaw\Core</Filter>
+    </ClCompile>
     <ClCompile Include="src\EagleClaw\Core\Log.cpp">
       <Filter>src\EagleClaw\Core</Filter>
     </ClCompile>
