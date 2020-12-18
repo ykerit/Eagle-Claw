@@ -54,7 +54,7 @@
     <ClInclude Include="src\EagleClaw\Core\Application.h">
       <Filter>src\EagleClaw\Core</Filter>
     </ClInclude>
-    <ClInclude Include="src\EagleClaw\Core\Core.h">
+    <ClInclude Include="src\EagleClaw\Core\Base.h">
       <Filter>src\EagleClaw\Core</Filter>
     </ClInclude>
     <ClInclude Include="src\EagleClaw\Core\EntryPoint.h">
@@ -62,6 +62,9 @@
     </ClInclude>
     <ClInclude Include="src\EagleClaw\Core\Log.h">
       <Filter>src\EagleClaw\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="src\EagleClaw\Renderer\Buffer.h">
+      <Filter>src\EagleClaw\Renderer</Filter>
     </ClInclude>
     <ClInclude Include="src\EagleClaw\Renderer\Camera.h">
       <Filter>src\EagleClaw\Renderer</Filter>
@@ -1192,6 +1195,9 @@
     </ClCompile>
     <ClCompile Include="src\EagleClaw\Core\Log.cpp">
       <Filter>src\EagleClaw\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="src\EagleClaw\Renderer\Buffer.cpp">
+      <Filter>src\EagleClaw\Renderer</Filter>
     </ClCompile>
     <ClCompile Include="src\EagleClaw\Renderer\Camera.cpp">
       <Filter>src\EagleClaw\Renderer</Filter>

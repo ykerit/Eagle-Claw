@@ -134,9 +134,10 @@
   <ItemGroup>
     <ClInclude Include="src\EagleClaw.h" />
     <ClInclude Include="src\EagleClaw\Core\Application.h" />
-    <ClInclude Include="src\EagleClaw\Core\Core.h" />
+    <ClInclude Include="src\EagleClaw\Core\Base.h" />
     <ClInclude Include="src\EagleClaw\Core\EntryPoint.h" />
     <ClInclude Include="src\EagleClaw\Core\Log.h" />
+    <ClInclude Include="src\EagleClaw\Renderer\Buffer.h" />
     <ClInclude Include="src\EagleClaw\Renderer\Camera.h" />
     <ClInclude Include="src\EagleClaw\Renderer\Renderer.h" />
     <ClInclude Include="src\Platform\OpenGL\IndexBuffer.h" />
@@ -515,6 +516,7 @@
   <ItemGroup>
     <ClCompile Include="src\EagleClaw\Core\Application.cpp" />
     <ClCompile Include="src\EagleClaw\Core\Log.cpp" />
+    <ClCompile Include="src\EagleClaw\Renderer\Buffer.cpp" />
     <ClCompile Include="src\EagleClaw\Renderer\Camera.cpp" />
     <ClCompile Include="src\EagleClaw\Renderer\Renderer.cpp" />
     <ClCompile Include="src\Platform\OpenGL\IndexBuffer.cpp" />

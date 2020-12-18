@@ -9,3 +9,7 @@
 #else
 #error EagleClaw only support Windows!
 #endif
+
+#define EGC_ASSERT(x) \
+  if (!(x))           \
+    __debugbreak();

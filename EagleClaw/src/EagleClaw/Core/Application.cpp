@@ -1,24 +1,18 @@
-#include "Preheader.h"
 #include "EagleClaw/Core/Application.h"
 
+#include "Preheader.h"
 
 namespace EagleClaw {
-	Application::Application()
-	{
+Application::Application() {}
 
-	}
+Application::~Application() {}
 
-	Application::~Application()
-	{
-
-	}
-
-	void Application::Run()
-	{
-		while (true);
-	}
-
+void Application::Run() {
+  while (true)
+    ;
 }
+
+}  // namespace EagleClaw
 
 //#include <GL/glew.h>
 //#include <GLFW/glfw3.h>
@@ -37,7 +31,7 @@ namespace EagleClaw {
 //#include "tests/TestClearColor.h"
 //#include "tests/TestTexture2D.h"
 
-//int main(void)
+// int main(void)
 //{
 //	GLFWwindow* window;
 //
@@ -76,9 +70,10 @@ namespace EagleClaw {
 //		io.FontGlobalScale = 2;
 //
 //		test::Test* currentTest = nullptr;
-//		std::unique_ptr<test::TestMenu> testMenu = std::make_unique<test::TestMenu>(currentTest);
-//		currentTest = testMenu.get();
-//		testMenu->RegisterTest<test::TestClearColor>("Clear Color");
+//		std::unique_ptr<test::TestMenu> testMenu =
+// std::make_unique<test::TestMenu>(currentTest); 		currentTest =
+// testMenu.get();
+// testMenu->RegisterTest<test::TestClearColor>("Clear Color");
 //		testMenu->RegisterTest<test::TestTexture2D>("Texture 2D");
 //
 //		while (!glfwWindowShouldClose(window))
@@ -88,12 +83,13 @@ namespace EagleClaw {
 //			ImGui_ImplGlfw_NewFrame();
 //			ImGui::NewFrame();
 //
-//			if (currentTest) 
+//			if (currentTest)
 //			{
 //				currentTest->OnUpdate(0.0f);
 //				currentTest->OnRender();
 //				ImGui::Begin("Test");
-//				if (currentTest != testMenu.get() && ImGui::Button("<-"))
+//				if (currentTest != testMenu.get() &&
+// ImGui::Button("<-"))
 //				{
 //					delete currentTest;
 //					currentTest = testMenu.get();

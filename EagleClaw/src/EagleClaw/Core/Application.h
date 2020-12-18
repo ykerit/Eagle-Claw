@@ -1,16 +1,16 @@
 #pragma once
 
-#include "Core.h"
+#include "Base.h"
 
 namespace EagleClaw {
-	class Application {
-	public:
-		Application();
+class Application {
+ public:
+  Application();
 
-		~Application();
+  ~Application();
 
-		void Run();
-	};
+  void Run();
+};
 
-	Application* CreateApplication();
-}
+Application* CreateApplication();
+}  // namespace EagleClaw
