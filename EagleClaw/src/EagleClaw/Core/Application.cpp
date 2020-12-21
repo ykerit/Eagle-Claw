@@ -1,14 +1,17 @@
-#include "Preheader.h"
 #include "EagleClaw/Core/Application.h"
 
-namespace EagleClaw {
-Application::Application() {}
+#include "Preheader.h"
 
-Application::~Application() {}
+namespace EagleClaw {
+Application::Application() {
+}
+
+Application::~Application() {
+}
 
 void Application::Run() {
-  while (true)
-    ;
+    while (true)
+        ;
 }
 
 }  // namespace EagleClaw

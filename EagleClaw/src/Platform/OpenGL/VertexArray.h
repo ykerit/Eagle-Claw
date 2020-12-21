@@ -4,14 +4,14 @@
 #include "VertexBufferLayout.h"
 
 class VertexArray {
- public:
-  VertexArray();
-  ~VertexArray();
+public:
+    VertexArray();
+    ~VertexArray();
 
-  void addBuffer(const VertexBuffer& buffer, const VertexBufferLayout& layout);
-  void Bind() const;
-  void Unbind() const;
+    void addBuffer(const VertexBuffer& buffer, const VertexBufferLayout& layout);
+    void Bind() const;
+    void Unbind() const;
 
- private:
-  GLuint renderID_;
+private:
+    GLuint renderID_;
 };

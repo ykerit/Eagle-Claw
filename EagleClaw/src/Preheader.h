@@ -10,6 +10,7 @@
 
 #include <algorithm>
 #include <array>
+#include <fstream>
 #include <functional>
 #include <iostream>
 #include <memory>
@@ -21,6 +22,7 @@
 #include <vector>
 
 #include "EagleClaw/Core/Base.h"
+#include "EagleClaw/Core/Log.h"
 
 #ifdef EGC_PLATFORM_WINDOWS
 #include <Windows.h>

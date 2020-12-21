@@ -138,15 +138,18 @@
     <ClInclude Include="src\EagleClaw\Core\EntryPoint.h" />
     <ClInclude Include="src\EagleClaw\Core\Log.h" />
     <ClInclude Include="src\EagleClaw\Renderer\Buffer.h" />
-    <ClInclude Include="src\EagleClaw\Renderer\Camera.h" />
     <ClInclude Include="src\EagleClaw\Renderer\Renderer.h" />
-    <ClInclude Include="src\Platform\OpenGL\IndexBuffer.h" />
+    <ClInclude Include="src\EagleClaw\Renderer\Shader.h" />
+    <ClInclude Include="src\EagleClaw\Renderer\Texture.h" />
+    <ClInclude Include="src\EagleClaw\Renderer\VertexArray.h" />
+    <ClInclude Include="src\Platform\OpenGL\GLBuffer.h" />
+    <ClInclude Include="src\Platform\OpenGL\GLContext.h" />
+    <ClInclude Include="src\Platform\OpenGL\GLShader.h" />
+    <ClInclude Include="src\Platform\OpenGL\GLTexture.h" />
     <ClInclude Include="src\Platform\OpenGL\Shader.h" />
     <ClInclude Include="src\Platform\OpenGL\Texture.h" />
     <ClInclude Include="src\Platform\OpenGL\VertexArray.h" />
-    <ClInclude Include="src\Platform\OpenGL\VertexBuffer.h" />
     <ClInclude Include="src\Platform\OpenGL\VertexBufferLayout.h" />
-    <ClInclude Include="src\Platform\OpenGL\common.h" />
     <ClInclude Include="src\Preheader.h" />
     <ClInclude Include="vendor\ImGuizmo\ImGuizmo.h" />
     <ClInclude Include="vendor\glm\glm\common.hpp" />
@@ -518,14 +521,13 @@
     <ClCompile Include="src\EagleClaw\Core\Base.cpp" />
     <ClCompile Include="src\EagleClaw\Core\Log.cpp" />
     <ClCompile Include="src\EagleClaw\Renderer\Buffer.cpp" />
-    <ClCompile Include="src\EagleClaw\Renderer\Camera.cpp" />
     <ClCompile Include="src\EagleClaw\Renderer\Renderer.cpp" />
-    <ClCompile Include="src\Platform\OpenGL\IndexBuffer.cpp" />
+    <ClCompile Include="src\Platform\OpenGL\GLBuffer.cpp" />
+    <ClCompile Include="src\Platform\OpenGL\GLContext.cpp" />
+    <ClCompile Include="src\Platform\OpenGL\GLShader.cpp" />
     <ClCompile Include="src\Platform\OpenGL\Shader.cpp" />
     <ClCompile Include="src\Platform\OpenGL\Texture.cpp" />
     <ClCompile Include="src\Platform\OpenGL\VertexArray.cpp" />
-    <ClCompile Include="src\Platform\OpenGL\VertexBuffer.cpp" />
-    <ClCompile Include="src\Platform\OpenGL\common.cpp" />
     <ClCompile Include="src\Preheader.cpp">
       <PrecompiledHeader>Create</PrecompiledHeader>
     </ClCompile>

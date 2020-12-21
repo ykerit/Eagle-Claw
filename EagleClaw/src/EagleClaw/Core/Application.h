@@ -4,12 +4,12 @@
 
 namespace EagleClaw {
 class Application {
- public:
-  Application();
+public:
+    Application();
 
-  ~Application();
+    ~Application();
 
-  void Run();
+    void Run();
 };
 
 Application* CreateApplication();

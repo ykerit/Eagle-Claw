@@ -66,14 +66,14 @@
     <ClInclude Include="src\EagleClaw\Renderer\Buffer.h">
       <Filter>src\EagleClaw\Renderer</Filter>
     </ClInclude>
-    <ClInclude Include="src\EagleClaw\Renderer\Camera.h">
-      <Filter>src\EagleClaw\Renderer</Filter>
-    </ClInclude>
     <ClInclude Include="src\EagleClaw\Renderer\Renderer.h">
       <Filter>src\EagleClaw\Renderer</Filter>
     </ClInclude>
-    <ClInclude Include="src\Platform\OpenGL\IndexBuffer.h">
-      <Filter>src\Platform\OpenGL</Filter>
+    <ClInclude Include="src\EagleClaw\Renderer\Shader.h">
+      <Filter>src\EagleClaw\Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="src\EagleClaw\Renderer\Texture.h">
+      <Filter>src\EagleClaw\Renderer</Filter>
     </ClInclude>
     <ClInclude Include="src\Platform\OpenGL\Shader.h">
       <Filter>src\Platform\OpenGL</Filter>
@@ -84,13 +84,7 @@
     <ClInclude Include="src\Platform\OpenGL\VertexArray.h">
       <Filter>src\Platform\OpenGL</Filter>
     </ClInclude>
-    <ClInclude Include="src\Platform\OpenGL\VertexBuffer.h">
-      <Filter>src\Platform\OpenGL</Filter>
-    </ClInclude>
     <ClInclude Include="src\Platform\OpenGL\VertexBufferLayout.h">
-      <Filter>src\Platform\OpenGL</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Platform\OpenGL\common.h">
       <Filter>src\Platform\OpenGL</Filter>
     </ClInclude>
     <ClInclude Include="src\Preheader.h">
@@ -1188,6 +1182,11 @@
     <ClInclude Include="vendor\stb_image\stb_image.h">
       <Filter>vendor\stb_image</Filter>
     </ClInclude>
+    <ClInclude Include="src\Platform\OpenGL\GLBuffer.h" />
+    <ClInclude Include="src\Platform\OpenGL\GLContext.h" />
+    <ClInclude Include="src\Platform\OpenGL\GLShader.h" />
+    <ClInclude Include="src\Platform\OpenGL\GLTexture.h" />
+    <ClInclude Include="src\EagleClaw\Renderer\VertexArray.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\EagleClaw\Core\Application.cpp">
@@ -1202,14 +1201,8 @@
     <ClCompile Include="src\EagleClaw\Renderer\Buffer.cpp">
       <Filter>src\EagleClaw\Renderer</Filter>
     </ClCompile>
-    <ClCompile Include="src\EagleClaw\Renderer\Camera.cpp">
-      <Filter>src\EagleClaw\Renderer</Filter>
-    </ClCompile>
     <ClCompile Include="src\EagleClaw\Renderer\Renderer.cpp">
       <Filter>src\EagleClaw\Renderer</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Platform\OpenGL\IndexBuffer.cpp">
-      <Filter>src\Platform\OpenGL</Filter>
     </ClCompile>
     <ClCompile Include="src\Platform\OpenGL\Shader.cpp">
       <Filter>src\Platform\OpenGL</Filter>
@@ -1218,12 +1211,6 @@
       <Filter>src\Platform\OpenGL</Filter>
     </ClCompile>
     <ClCompile Include="src\Platform\OpenGL\VertexArray.cpp">
-      <Filter>src\Platform\OpenGL</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Platform\OpenGL\VertexBuffer.cpp">
-      <Filter>src\Platform\OpenGL</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Platform\OpenGL\common.cpp">
       <Filter>src\Platform\OpenGL</Filter>
     </ClCompile>
     <ClCompile Include="src\Preheader.cpp">
@@ -1235,5 +1222,8 @@
     <ClCompile Include="vendor\stb_image\stb_image.cpp">
       <Filter>vendor\stb_image</Filter>
     </ClCompile>
+    <ClCompile Include="src\Platform\OpenGL\GLBuffer.cpp" />
+    <ClCompile Include="src\Platform\OpenGL\GLContext.cpp" />
+    <ClCompile Include="src\Platform\OpenGL\GLShader.cpp" />
   </ItemGroup>
 </Project>

@@ -11,21 +11,27 @@
 #endif
 
 #define EGC_ASSERT(x) \
-  if (!(x))           \
-    __debugbreak();
+    if (!(x))         \
+        __debugbreak();
+
+#define EGC_ASSERT_MSG(condition, message)                                               \
+    do {                                                                                 \
+        if (!(condition)) {                                                              \
+            std::cerr << "Assertion `" #condition "` failed in " << __FILE__ << " line " \
+                      << __LINE__ << ": " << message << std::endl;                       \
+            std::terminate();                                                            \
+        }                                                                                \
+    } while (false)
 
 // opengl base util
 #include <Glad/glad.h>
 
-#define ASSERT(x) \
-  if (!(x))       \
-    __debugbreak();
-#define GLCALL(x)                             \
-  {                                           \
-    GLClearError();                           \
-    x;                                        \
-    ASSERT(GLLogCall(#x, __FILE__, __LINE__)) \
-  }
+#define GLCALL(x)                                     \
+    {                                                 \
+        GLClearError();                               \
+        x;                                            \
+        EGC_ASSERT(GLLogCall(#x, __FILE__, __LINE__)) \
+    }
 
 void GLClearError();
 
