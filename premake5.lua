@@ -11,11 +11,6 @@ workspace "OpenGL"
 		"Dist"
 	}
 
-	solution_items
-	{
-		".editorconfig"
-	}
-
 	flags
 	{
 		"MultiProcessorCompile"

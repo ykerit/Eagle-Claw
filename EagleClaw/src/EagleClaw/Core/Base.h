@@ -23,9 +23,6 @@
         }                                                                                \
     } while (false)
 
-// opengl base util
-#include <Glad/glad.h>
-
 #define GLCALL(x)                                     \
     {                                                 \
         GLClearError();                               \

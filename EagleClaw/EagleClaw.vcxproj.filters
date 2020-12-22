@@ -16,6 +16,9 @@
     <Filter Include="src\Platform">
       <UniqueIdentifier>{21CA02E5-0D2D-9289-B6B2-CA3FA2F45D0C}</UniqueIdentifier>
     </Filter>
+    <Filter Include="src\Platform\GLFWindow">
+      <UniqueIdentifier>{C15881F6-AD52-AA48-96BF-4059825810B5}</UniqueIdentifier>
+    </Filter>
     <Filter Include="src\Platform\OpenGL">
       <UniqueIdentifier>{35A49437-A105-7245-2A73-B8F796D3A804}</UniqueIdentifier>
     </Filter>
@@ -63,10 +66,13 @@
     <ClInclude Include="src\EagleClaw\Core\Log.h">
       <Filter>src\EagleClaw\Core</Filter>
     </ClInclude>
+    <ClInclude Include="src\EagleClaw\Core\window.h">
+      <Filter>src\EagleClaw\Core</Filter>
+    </ClInclude>
     <ClInclude Include="src\EagleClaw\Renderer\Buffer.h">
       <Filter>src\EagleClaw\Renderer</Filter>
     </ClInclude>
-    <ClInclude Include="src\EagleClaw\Renderer\Renderer.h">
+    <ClInclude Include="src\EagleClaw\Renderer\GraphicsContext.h">
       <Filter>src\EagleClaw\Renderer</Filter>
     </ClInclude>
     <ClInclude Include="src\EagleClaw\Renderer\Shader.h">
@@ -75,16 +81,22 @@
     <ClInclude Include="src\EagleClaw\Renderer\Texture.h">
       <Filter>src\EagleClaw\Renderer</Filter>
     </ClInclude>
-    <ClInclude Include="src\Platform\OpenGL\Shader.h">
+    <ClInclude Include="src\EagleClaw\Renderer\VertexArray.h">
+      <Filter>src\EagleClaw\Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Platform\GLFWindow\GWindow.h">
+      <Filter>src\Platform\GLFWindow</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Platform\OpenGL\GLBuffer.h">
       <Filter>src\Platform\OpenGL</Filter>
     </ClInclude>
-    <ClInclude Include="src\Platform\OpenGL\Texture.h">
+    <ClInclude Include="src\Platform\OpenGL\GLContext.h">
       <Filter>src\Platform\OpenGL</Filter>
     </ClInclude>
-    <ClInclude Include="src\Platform\OpenGL\VertexArray.h">
+    <ClInclude Include="src\Platform\OpenGL\GLShader.h">
       <Filter>src\Platform\OpenGL</Filter>
     </ClInclude>
-    <ClInclude Include="src\Platform\OpenGL\VertexBufferLayout.h">
+    <ClInclude Include="src\Platform\OpenGL\GLTexture.h">
       <Filter>src\Platform\OpenGL</Filter>
     </ClInclude>
     <ClInclude Include="src\Preheader.h">
@@ -1182,11 +1194,6 @@
     <ClInclude Include="vendor\stb_image\stb_image.h">
       <Filter>vendor\stb_image</Filter>
     </ClInclude>
-    <ClInclude Include="src\Platform\OpenGL\GLBuffer.h" />
-    <ClInclude Include="src\Platform\OpenGL\GLContext.h" />
-    <ClInclude Include="src\Platform\OpenGL\GLShader.h" />
-    <ClInclude Include="src\Platform\OpenGL\GLTexture.h" />
-    <ClInclude Include="src\EagleClaw\Renderer\VertexArray.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\EagleClaw\Core\Application.cpp">
@@ -1198,19 +1205,25 @@
     <ClCompile Include="src\EagleClaw\Core\Log.cpp">
       <Filter>src\EagleClaw\Core</Filter>
     </ClCompile>
+    <ClCompile Include="src\EagleClaw\Core\window.cpp">
+      <Filter>src\EagleClaw\Core</Filter>
+    </ClCompile>
     <ClCompile Include="src\EagleClaw\Renderer\Buffer.cpp">
       <Filter>src\EagleClaw\Renderer</Filter>
     </ClCompile>
-    <ClCompile Include="src\EagleClaw\Renderer\Renderer.cpp">
-      <Filter>src\EagleClaw\Renderer</Filter>
+    <ClCompile Include="src\Platform\GLFWindow\GWindow.cpp">
+      <Filter>src\Platform\GLFWindow</Filter>
     </ClCompile>
-    <ClCompile Include="src\Platform\OpenGL\Shader.cpp">
+    <ClCompile Include="src\Platform\OpenGL\GLBuffer.cpp">
       <Filter>src\Platform\OpenGL</Filter>
     </ClCompile>
-    <ClCompile Include="src\Platform\OpenGL\Texture.cpp">
+    <ClCompile Include="src\Platform\OpenGL\GLContext.cpp">
       <Filter>src\Platform\OpenGL</Filter>
     </ClCompile>
-    <ClCompile Include="src\Platform\OpenGL\VertexArray.cpp">
+    <ClCompile Include="src\Platform\OpenGL\GLShader.cpp">
+      <Filter>src\Platform\OpenGL</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Platform\OpenGL\GLTexture.cpp">
       <Filter>src\Platform\OpenGL</Filter>
     </ClCompile>
     <ClCompile Include="src\Preheader.cpp">
@@ -1222,8 +1235,10 @@
     <ClCompile Include="vendor\stb_image\stb_image.cpp">
       <Filter>vendor\stb_image</Filter>
     </ClCompile>
-    <ClCompile Include="src\Platform\OpenGL\GLBuffer.cpp" />
-    <ClCompile Include="src\Platform\OpenGL\GLContext.cpp" />
-    <ClCompile Include="src\Platform\OpenGL\GLShader.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="src\Platform\GLFWindow\GWindow.cpp-de720680">
+      <Filter>src\Platform\GLFWindow</Filter>
+    </None>
   </ItemGroup>
 </Project>

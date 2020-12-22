@@ -113,7 +113,7 @@ public:
 
     virtual const size_t GetCount() const = 0;
 
-    IDBPtr Create(const size_t* indices, const size_t count);
+    IDBPtr Create(const uint32_t* indices, const size_t count);
 };
 
 }  // namespace EagleClaw

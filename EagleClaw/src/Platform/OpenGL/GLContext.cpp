@@ -1,9 +1,8 @@
+#include "Preheader.h"
 #include "Platform/OpenGL/GLContext.h"
 
 #include <GLFW/glfw3.h>
 #include <glad/glad.h>
-
-#include "Preheader.h"
 
 namespace EagleClaw {
 

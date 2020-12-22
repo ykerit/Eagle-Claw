@@ -3,7 +3,7 @@
 #include "EagleClaw/Renderer/Buffer.h"
 
 namespace EagleClaw {
-class GLVertexBuffer : VertexBuffer {
+class GLVertexBuffer : public VertexBuffer {
 public:
     GLVertexBuffer(size_t size);
     GLVertexBuffer(const float* vertices, const size_t size);
@@ -26,9 +26,9 @@ private:
     BufferLayout layout_;
 };
 
-class GLIndexBuffer : IndexBuffer {
+class GLIndexBuffer : public IndexBuffer {
 public:
-    GLIndexBuffer(uint32_t* indices, size_t count);
+    GLIndexBuffer(const uint32_t* indices, size_t count);
     ~GLIndexBuffer();
 
     void Bind() const override;

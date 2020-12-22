@@ -1,6 +1,7 @@
+#include "Preheader.h"
 #include "EagleClaw/Core/Base.h"
 
-#include "Preheader.h"
+#include <glad/glad.h>
 
 void GLClearError() {
     while (glGetError() != GL_NO_ERROR)

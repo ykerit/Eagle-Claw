@@ -3,3 +3,10 @@ OpenGL/Debug
 Debug
 bin
 bin-int
+!vendor/premake/bin/
+
+.vs/
+**.sln
+**.vcxproj
+**.vcxproj.filters
+**.vcxproj.user

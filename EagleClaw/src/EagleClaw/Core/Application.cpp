@@ -1,6 +1,5 @@
-#include "EagleClaw/Core/Application.h"
-
 #include "Preheader.h"
+#include "EagleClaw/Core/Application.h"
 
 namespace EagleClaw {
 Application::Application() {

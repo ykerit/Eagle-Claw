@@ -1,6 +1,7 @@
+#include "Preheader.h"
 #include "GLBuffer.h"
 
-#include "Preheader.h"
+#include <glad/glad.h>
 
 namespace EagleClaw {
 GLVertexBuffer::GLVertexBuffer(size_t size) {
@@ -31,7 +32,7 @@ void GLVertexBuffer::SetData(const void* data, size_t size) {
     GLCALL(glBufferSubData(GL_ARRAY_BUFFER, 0, size, data));
 }
 
-GLIndexBuffer::GLIndexBuffer(uint32_t* indices, size_t count) : count_(count) {
+GLIndexBuffer::GLIndexBuffer(const uint32_t* indices, size_t count) : count_(count) {
     GLCALL(glCreateBuffers(1, &rendererID_));
     GLCALL(glBindBuffer(GL_ARRAY_BUFFER, rendererID_));
     GLCALL(glBufferData(GL_ARRAY_BUFFER, count * sizeof(uint32_t), indices, GL_STATIC_DRAW));

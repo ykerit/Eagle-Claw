@@ -2,6 +2,8 @@
 
 #include "EagleClaw/Renderer/Shader.h"
 
+typedef unsigned int GLenum;
+
 namespace EagleClaw {
 
 class GLShader : public Shader {
@@ -12,7 +14,9 @@ public:
     void Bind() const override;
     void Unbind() const override;
 
-    const std::string GetName() const override;
+    const std::string GetName() const override {
+        return name_;
+    }
 
     void SetInt(const std::string& name, int value) override;
 

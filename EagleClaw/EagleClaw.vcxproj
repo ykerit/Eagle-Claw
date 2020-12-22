@@ -137,19 +137,17 @@
     <ClInclude Include="src\EagleClaw\Core\Base.h" />
     <ClInclude Include="src\EagleClaw\Core\EntryPoint.h" />
     <ClInclude Include="src\EagleClaw\Core\Log.h" />
+    <ClInclude Include="src\EagleClaw\Core\window.h" />
     <ClInclude Include="src\EagleClaw\Renderer\Buffer.h" />
-    <ClInclude Include="src\EagleClaw\Renderer\Renderer.h" />
+    <ClInclude Include="src\EagleClaw\Renderer\GraphicsContext.h" />
     <ClInclude Include="src\EagleClaw\Renderer\Shader.h" />
     <ClInclude Include="src\EagleClaw\Renderer\Texture.h" />
     <ClInclude Include="src\EagleClaw\Renderer\VertexArray.h" />
+    <ClInclude Include="src\Platform\GLFWindow\GWindow.h" />
     <ClInclude Include="src\Platform\OpenGL\GLBuffer.h" />
     <ClInclude Include="src\Platform\OpenGL\GLContext.h" />
     <ClInclude Include="src\Platform\OpenGL\GLShader.h" />
     <ClInclude Include="src\Platform\OpenGL\GLTexture.h" />
-    <ClInclude Include="src\Platform\OpenGL\Shader.h" />
-    <ClInclude Include="src\Platform\OpenGL\Texture.h" />
-    <ClInclude Include="src\Platform\OpenGL\VertexArray.h" />
-    <ClInclude Include="src\Platform\OpenGL\VertexBufferLayout.h" />
     <ClInclude Include="src\Preheader.h" />
     <ClInclude Include="vendor\ImGuizmo\ImGuizmo.h" />
     <ClInclude Include="vendor\glm\glm\common.hpp" />
@@ -520,14 +518,13 @@
     <ClCompile Include="src\EagleClaw\Core\Application.cpp" />
     <ClCompile Include="src\EagleClaw\Core\Base.cpp" />
     <ClCompile Include="src\EagleClaw\Core\Log.cpp" />
+    <ClCompile Include="src\EagleClaw\Core\window.cpp" />
     <ClCompile Include="src\EagleClaw\Renderer\Buffer.cpp" />
-    <ClCompile Include="src\EagleClaw\Renderer\Renderer.cpp" />
+    <ClCompile Include="src\Platform\GLFWindow\GWindow.cpp" />
     <ClCompile Include="src\Platform\OpenGL\GLBuffer.cpp" />
     <ClCompile Include="src\Platform\OpenGL\GLContext.cpp" />
     <ClCompile Include="src\Platform\OpenGL\GLShader.cpp" />
-    <ClCompile Include="src\Platform\OpenGL\Shader.cpp" />
-    <ClCompile Include="src\Platform\OpenGL\Texture.cpp" />
-    <ClCompile Include="src\Platform\OpenGL\VertexArray.cpp" />
+    <ClCompile Include="src\Platform\OpenGL\GLTexture.cpp" />
     <ClCompile Include="src\Preheader.cpp">
       <PrecompiledHeader>Create</PrecompiledHeader>
     </ClCompile>
@@ -535,6 +532,9 @@
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
     </ClCompile>
     <ClCompile Include="vendor\stb_image\stb_image.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="src\Platform\GLFWindow\GWindow.cpp-de720680" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="vendor\GLFW\GLFW.vcxproj">

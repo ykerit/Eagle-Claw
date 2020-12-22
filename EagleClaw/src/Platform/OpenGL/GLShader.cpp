@@ -1,26 +1,41 @@
+#include "Preheader.h"
 #include "Platform/OpenGL/GLShader.h"
 
-#include "Preheader.h"
+#include <glad/glad.h>
 
 namespace EagleClaw {
 
 GLShader::GLShader(const std::string& filepath) {
+    std::string source = ReadFile(filepath);
+    auto shader        = PreProcess(source);
+    Compile(shader);
+
+    auto lastSlash = filepath.find_last_of("/\\");
+    lastSlash      = lastSlash == std::string::npos ? 0 : lastSlash + 1;
+    auto lastDot   = filepath.rfind(".");
+    auto count = lastDot == std::string::npos ? filepath.size() - lastSlash : lastDot - lastSlash;
+    name_      = filepath.substr(lastSlash, count);
 }
 
 GLShader::GLShader(const std::string& name, const std::string& vertSrc,
-                   const std::string& fragmentSrc) {
+                   const std::string& fragmentSrc)
+    : name_(name) {
+    std::unordered_map<GLenum, std::string> sources;
+    sources[GL_VERTEX_SHADER]   = vertSrc;
+    sources[GL_FRAGMENT_SHADER] = fragmentSrc;
+    Compile(sources);
 }
 
 GLShader::~GLShader() {
+    GLCALL(glDeleteShader(rendererID_));
 }
 
 void GLShader::Bind() const {
+    GLCALL(glUseProgram(rendererID_));
 }
 
 void GLShader::Unbind() const {
-}
-
-const std::string GLShader::GetName() const {
+    GLCALL(glUseProgram(0));
 }
 
 void GLShader::SetInt(const std::string& name, int value) {
@@ -60,9 +75,33 @@ std::string GLShader::ReadFile(const std::string& file) {
     return result;
 }
 
+static GLenum GetTypeFromStr(const std::string& type) {
+    if (type == "vertex") {
+        return GL_VERTEX_SHADER;
+    } else if (type == "fragment") {
+        return GL_FRAGMENT_SHADER;
+    }
+    EGC_ASSERT_MSG(false, "Shader Type Error");
+}
+
 std::unordered_map<GLenum, std::string> GLShader::PreProcess(const std::string& source) {
     std::unordered_map<GLenum, std::string> shaderSources;
     const char* typeToken = "#type";
+    size_t typeTokenLen   = strlen(typeToken);
+    size_t pos            = source.find(typeToken, 0);
+    while (pos != std::string::npos) {
+        size_t eof = source.find_first_of("\r\n", pos);
+        EGC_ASSERT_MSG(eof != std::string::npos, "Synatx error");
+        size_t begin     = pos + typeTokenLen + 1;
+        std::string type = source.substr(begin, eof - begin);
+        EGC_ASSERT(GetTypeFromStr(type));
+        size_t nextLinePos = source.find_last_not_of("\r\n", eof);
+        EGC_ASSERT_MSG(nextLinePos != std::string::npos, "Synatx error");
+        pos                                 = source.find(typeToken, nextLinePos);
+        shaderSources[GetTypeFromStr(type)] = (pos == std::string::npos)
+                                                  ? source.substr(nextLinePos)
+                                                  : source.substr(nextLinePos, pos - nextLinePos);
+    }
     return shaderSources;
 }
 

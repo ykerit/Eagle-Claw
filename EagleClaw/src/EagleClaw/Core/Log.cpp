@@ -1,8 +1,7 @@
+#include "Preheader.h"
 #include "EagleClaw/Core/Log.h"
 
 #include <spdlog/sinks/stdout_color_sinks.h>
-
-#include "Preheader.h"
 
 namespace EagleClaw {
 std::shared_ptr<spdlog::logger> Log::core_logger_;
