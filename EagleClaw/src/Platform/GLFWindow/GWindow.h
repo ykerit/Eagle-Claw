@@ -15,11 +15,11 @@ namespace EagleClaw
 
         void OnUpdate() override;
 
-        const size_t GetWidth() const override { return width_; }
+        const size_t GetWidth() const override { return meta_.width; }
 
-        const size_t GetHeight() const override { return height_; }
+        const size_t GetHeight() const override { return meta_.height; }
 
-        void SetEventCallback(EventCallback& callback) override;
+        void SetEventCallback(const EventCallback& callback) override;
 
         void SetVSync(bool enabled) override;
 
@@ -31,12 +31,19 @@ namespace EagleClaw
         void Init(const WindowProps& windowProps);
         void ShutDown();
 
+        struct WindowMeta
+        {
+            size_t width;
+            size_t height;
+            std::string title;
+            bool enableVSync;
+
+            Window::EventCallback callback;
+        };
+
         std::unique_ptr<GraphicsContext> context_;
         GLFWwindow* window_;
-        size_t width_;
-        size_t height_;
-        std::string title_;
-        bool enableVSync_;
+        WindowMeta meta_;
     };
 
 }  // namespace EagleClaw

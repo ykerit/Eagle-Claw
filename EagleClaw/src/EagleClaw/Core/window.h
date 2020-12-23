@@ -1,8 +1,10 @@
 #pragma once
 
-#include <string>
 #include <functional>
 #include <memory>
+#include <string>
+
+#include "EagleClaw/Core/Event.h"
 
 namespace EagleClaw
 {
@@ -21,16 +23,16 @@ namespace EagleClaw
     class Window
     {
     public:
-        using EventCallback = std::function<void()>;
+        using EventCallback = std::function<void(Event&)>;
 
-        virtual ~Window()                                      = default;
-        virtual void OnUpdate()                                = 0;
-        virtual const size_t GetWidth() const                  = 0;
-        virtual const size_t GetHeight() const                 = 0;
-        virtual void SetEventCallback(EventCallback& callback) = 0;
-        virtual void SetVSync(bool enabled)                    = 0;
-        virtual bool IsVSync() const                           = 0;
-        virtual void* GetNaiveWindow() const                   = 0;
+        virtual ~Window()                                            = default;
+        virtual void OnUpdate()                                      = 0;
+        virtual const size_t GetWidth() const                        = 0;
+        virtual const size_t GetHeight() const                       = 0;
+        virtual void SetEventCallback(const EventCallback& callback) = 0;
+        virtual void SetVSync(bool enabled)                          = 0;
+        virtual bool IsVSync() const                                 = 0;
+        virtual void* GetNaiveWindow() const                         = 0;
 
         static std::unique_ptr<Window> Create(const WindowProps& props);
     };

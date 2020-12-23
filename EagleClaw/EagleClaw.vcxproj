@@ -134,8 +134,10 @@
   <ItemGroup>
     <ClInclude Include="src\EagleClaw.h" />
     <ClInclude Include="src\EagleClaw\Core\Application.h" />
+    <ClInclude Include="src\EagleClaw\Core\ApplicationEvent.h" />
     <ClInclude Include="src\EagleClaw\Core\Base.h" />
     <ClInclude Include="src\EagleClaw\Core\EntryPoint.h" />
+    <ClInclude Include="src\EagleClaw\Core\Event.h" />
     <ClInclude Include="src\EagleClaw\Core\Layer.h" />
     <ClInclude Include="src\EagleClaw\Core\LayerStack.h" />
     <ClInclude Include="src\EagleClaw\Core\Log.h" />

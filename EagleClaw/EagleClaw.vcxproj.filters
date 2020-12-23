@@ -57,10 +57,16 @@
     <ClInclude Include="src\EagleClaw\Core\Application.h">
       <Filter>src\EagleClaw\Core</Filter>
     </ClInclude>
+    <ClInclude Include="src\EagleClaw\Core\ApplicationEvent.h">
+      <Filter>src\EagleClaw\Core</Filter>
+    </ClInclude>
     <ClInclude Include="src\EagleClaw\Core\Base.h">
       <Filter>src\EagleClaw\Core</Filter>
     </ClInclude>
     <ClInclude Include="src\EagleClaw\Core\EntryPoint.h">
+      <Filter>src\EagleClaw\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="src\EagleClaw\Core\Event.h">
       <Filter>src\EagleClaw\Core</Filter>
     </ClInclude>
     <ClInclude Include="src\EagleClaw\Core\Layer.h">

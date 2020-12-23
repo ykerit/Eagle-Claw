@@ -3,22 +3,34 @@
 #include "EagleClaw/Core/Application.h"
 #include "EagleClaw/Renderer/Renderer.h"
 
+
 namespace EagleClaw
 {
+
     Application* Application::instance_ = nullptr;
 
     Application::Application(const std::string& name) { 
         EGC_ASSERT_MSG(!instance_, "Application already exists");
         instance_ = this;
         window_    = Window::Create(WindowProps(name));
-
+        window_->SetEventCallback(BIND_EVENT_FUNC(Application::OnEvent));
         Renderer::Init();
     }
 
     Application::~Application() { Renderer::ShutDown();
     }
 
-    void Application::OnEvent() { }
+    void Application::OnEvent(Event& event) { 
+        EventDispatcher dispatcher(event);
+        dispatcher.Dispatch<WindowCloseEvent>(BIND_EVENT_FUNC(Application::OnWindowClose));
+        //dispatcher.Dispatch<WindowResizeEvent>(BIND_EVENT_FUNC(Application::OnWindowResize));
+
+        for (auto it = stack_.rbegin(); it != stack_.rend(); ++it) {
+            if (event.handled)
+                break;
+            (*it)->OnEvent(event);
+        }
+    }
 
     void Application::PushLayer(Layer* layer) {
     }
@@ -40,5 +52,13 @@ namespace EagleClaw
             window_->OnUpdate();
         }
     }
+
+    bool Application::OnWindowClose(WindowCloseEvent& e) { 
+        running_ = false;
+        return true;
+    }
+    
+
+    bool Application::OnWindowResize(WindowResizeEvent& e) { return false; }
 
 }  // namespace EagleClaw
