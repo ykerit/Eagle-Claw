@@ -15,41 +15,6 @@ void Application::Run() {
 
 }  // namespace EagleClaw
 
-//#include <GL/glew.h>
-//#include <GLFW/glfw3.h>
-//
-//#include <iostream>
-//#include <fstream>
-//#include <sstream>
-//#include <string>
-//
-//#include "imgui/imgui.h"
-//#include "imgui/imgui_impl_opengl3.h"
-//#include "imgui/imgui_impl_glfw.h"
-//
-//#include "glm/glm.hpp"
-//#include "glm/gtc/matrix_transform.hpp"
-//#include "tests/TestClearColor.h"
-//#include "tests/TestTexture2D.h"
-
-// int main(void)
-//{
-//	GLFWwindow* window;
-//
-//	/* Initialize the library */
-//	if (!glfwInit())
-//		return -1;
-//
-//	/* Create a windowed mode window and its OpenGL context */
-//	window = glfwCreateWindow(1920.0f, 1080.0f, "Hello World", NULL, NULL);
-//	if (!window)
-//	{
-//		glfwTerminate();
-//		return -1;
-//	}
-//
-//	/* Make the window's context current */
-//	glfwMakeContextCurrent(window);
 //
 //	if (glewInit() != GLEW_OK)
 //		std::cout << "error!" << std::endl;

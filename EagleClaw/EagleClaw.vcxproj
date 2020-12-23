@@ -520,6 +520,7 @@
     <ClCompile Include="src\EagleClaw\Core\Log.cpp" />
     <ClCompile Include="src\EagleClaw\Core\window.cpp" />
     <ClCompile Include="src\EagleClaw\Renderer\Buffer.cpp" />
+    <ClCompile Include="src\EagleClaw\Renderer\GraphicsContext.cpp" />
     <ClCompile Include="src\Platform\GLFWindow\GWindow.cpp" />
     <ClCompile Include="src\Platform\OpenGL\GLBuffer.cpp" />
     <ClCompile Include="src\Platform\OpenGL\GLContext.cpp" />
@@ -532,9 +533,6 @@
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
     </ClCompile>
     <ClCompile Include="vendor\stb_image\stb_image.cpp" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="src\Platform\GLFWindow\GWindow.cpp-de720680" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="vendor\GLFW\GLFW.vcxproj">

@@ -1235,10 +1235,6 @@
     <ClCompile Include="vendor\stb_image\stb_image.cpp">
       <Filter>vendor\stb_image</Filter>
     </ClCompile>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="src\Platform\GLFWindow\GWindow.cpp-de720680">
-      <Filter>src\Platform\GLFWindow</Filter>
-    </None>
+    <ClCompile Include="src\EagleClaw\Renderer\GraphicsContext.cpp" />
   </ItemGroup>
 </Project>

@@ -2,6 +2,12 @@
 
 namespace EagleClaw {
 
+struct WindowProps {
+    size_t width;
+    size_t heigth;
+    std::string title;
+};
+
 class Window {
 public:
     using EventCallback = std::function<void()>;
