@@ -7,8 +7,8 @@ project "EagleClaw"
 	targetdir ("%{wks.location}/bin/" .. outputdir .. "/%{prj.name}")
 	objdir ("%{wks.location}/bin-int/" .. outputdir .. "/%{prj.name}")
 
-	pchheader "Preheader.h"
-	pchsource "src/Preheader.cpp"
+	pchheader "Egcpch.h"
+	pchsource "src/Egcpch.cpp"
 
 	files
 	{

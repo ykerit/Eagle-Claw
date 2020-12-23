@@ -1,16 +1,35 @@
 #pragma once
 
-#include "Base.h"
+#include "EagleClaw/Core/Base.h"
+#include "EagleClaw/Core/window.h"
+#include "EagleClaw/Core/LayerStack.h"
 
-namespace EagleClaw {
-class Application {
-public:
-    Application();
+namespace EagleClaw
+{
+    class Application
+    {
+    public:
+        Application(const std::string& name);
 
-    ~Application();
+        virtual ~Application();
 
-    void Run();
-};
+        void OnEvent();
+        void PushLayer(Layer* layer);
+        void PushLayerOverlay(Layer* layer);
 
-Application* CreateApplication();
+        Window& GetWindow() { return *window_; }
+
+        void Close() { running_ = false; }
+        void Run();
+
+        static Application& Get() { return *instance_; }
+
+    private:
+        std::unique_ptr<Window> window_;
+        LayerStack stack_;
+        bool running_ = true;
+        static Application* instance_;
+    };
+
+    Application* CreateApplication();
 }  // namespace EagleClaw

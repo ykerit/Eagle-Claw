@@ -1,14 +1,11 @@
 #include <EagleClaw.h>
 
-class Sandbox : public EagleClaw::Application {
+class Sandbox : public EagleClaw::Application
+{
 public:
-    Sandbox() {
-    }
+    Sandbox() : Application("Sandbox") { }
 
-    ~Sandbox() {
-    }
+    ~Sandbox() { }
 };
 
-EagleClaw::Application* EagleClaw::CreateApplication() {
-    return new Sandbox();
-}
+EagleClaw::Application* EagleClaw::CreateApplication() { return new Sandbox(); }

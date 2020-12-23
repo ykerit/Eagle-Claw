@@ -74,7 +74,7 @@
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
       <PrecompiledHeader>Use</PrecompiledHeader>
-      <PrecompiledHeaderFile>Preheader.h</PrecompiledHeaderFile>
+      <PrecompiledHeaderFile>Egcpch.h</PrecompiledHeaderFile>
       <WarningLevel>Level3</WarningLevel>
       <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;GLFW_INCLUDE_NONE;EGC_PLATFORM_WINDOWS;EGC_BUILD_DLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <AdditionalIncludeDirectories>src;vendor\spdlog\include;vendor\GLFW\include;vendor\Glad\include;vendor\imgui;vendor\glm;vendor\stb_image;vendor\ImGuizmo;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
@@ -94,7 +94,7 @@
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
       <PrecompiledHeader>Use</PrecompiledHeader>
-      <PrecompiledHeaderFile>Preheader.h</PrecompiledHeaderFile>
+      <PrecompiledHeaderFile>Egcpch.h</PrecompiledHeaderFile>
       <WarningLevel>Level3</WarningLevel>
       <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;GLFW_INCLUDE_NONE;EGC_PLATFORM_WINDOWS;EGC_BUILD_DLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <AdditionalIncludeDirectories>src;vendor\spdlog\include;vendor\GLFW\include;vendor\Glad\include;vendor\imgui;vendor\glm;vendor\stb_image;vendor\ImGuizmo;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
@@ -114,7 +114,7 @@
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Dist|x64'">
     <ClCompile>
       <PrecompiledHeader>Use</PrecompiledHeader>
-      <PrecompiledHeaderFile>Preheader.h</PrecompiledHeaderFile>
+      <PrecompiledHeaderFile>Egcpch.h</PrecompiledHeaderFile>
       <WarningLevel>Level3</WarningLevel>
       <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;GLFW_INCLUDE_NONE;EGC_PLATFORM_WINDOWS;EGC_BUILD_DLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <AdditionalIncludeDirectories>src;vendor\spdlog\include;vendor\GLFW\include;vendor\Glad\include;vendor\imgui;vendor\glm;vendor\stb_image;vendor\ImGuizmo;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
@@ -136,19 +136,22 @@
     <ClInclude Include="src\EagleClaw\Core\Application.h" />
     <ClInclude Include="src\EagleClaw\Core\Base.h" />
     <ClInclude Include="src\EagleClaw\Core\EntryPoint.h" />
+    <ClInclude Include="src\EagleClaw\Core\Layer.h" />
+    <ClInclude Include="src\EagleClaw\Core\LayerStack.h" />
     <ClInclude Include="src\EagleClaw\Core\Log.h" />
     <ClInclude Include="src\EagleClaw\Core\window.h" />
     <ClInclude Include="src\EagleClaw\Renderer\Buffer.h" />
     <ClInclude Include="src\EagleClaw\Renderer\GraphicsContext.h" />
+    <ClInclude Include="src\EagleClaw\Renderer\Renderer.h" />
     <ClInclude Include="src\EagleClaw\Renderer\Shader.h" />
     <ClInclude Include="src\EagleClaw\Renderer\Texture.h" />
     <ClInclude Include="src\EagleClaw\Renderer\VertexArray.h" />
+    <ClInclude Include="src\Egcpch.h" />
     <ClInclude Include="src\Platform\GLFWindow\GWindow.h" />
     <ClInclude Include="src\Platform\OpenGL\GLBuffer.h" />
     <ClInclude Include="src\Platform\OpenGL\GLContext.h" />
     <ClInclude Include="src\Platform\OpenGL\GLShader.h" />
     <ClInclude Include="src\Platform\OpenGL\GLTexture.h" />
-    <ClInclude Include="src\Preheader.h" />
     <ClInclude Include="vendor\ImGuizmo\ImGuizmo.h" />
     <ClInclude Include="vendor\glm\glm\common.hpp" />
     <ClInclude Include="vendor\glm\glm\detail\_features.hpp" />
@@ -521,14 +524,15 @@
     <ClCompile Include="src\EagleClaw\Core\window.cpp" />
     <ClCompile Include="src\EagleClaw\Renderer\Buffer.cpp" />
     <ClCompile Include="src\EagleClaw\Renderer\GraphicsContext.cpp" />
+    <ClCompile Include="src\EagleClaw\Renderer\Renderer.cpp" />
+    <ClCompile Include="src\Egcpch.cpp">
+      <PrecompiledHeader>Create</PrecompiledHeader>
+    </ClCompile>
     <ClCompile Include="src\Platform\GLFWindow\GWindow.cpp" />
     <ClCompile Include="src\Platform\OpenGL\GLBuffer.cpp" />
     <ClCompile Include="src\Platform\OpenGL\GLContext.cpp" />
     <ClCompile Include="src\Platform\OpenGL\GLShader.cpp" />
     <ClCompile Include="src\Platform\OpenGL\GLTexture.cpp" />
-    <ClCompile Include="src\Preheader.cpp">
-      <PrecompiledHeader>Create</PrecompiledHeader>
-    </ClCompile>
     <ClCompile Include="vendor\ImGuizmo\ImGuizmo.cpp">
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
     </ClCompile>

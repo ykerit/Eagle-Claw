@@ -1,42 +1,62 @@
-#include "Preheader.h"
+#include "Egcpch.h"
+
 #include "Platform/GLFWindow/GWindow.h"
 
-#include <GLFW/glfw3.h>
 #include "EagleClaw/Renderer/GraphicsContext.h"
 
-namespace EagleClaw {
+namespace EagleClaw
+{
+    static size_t windowCount = 0;
 
-GWindow::GWindow(const WindowProps& windowProps) : enableVSync_(false) {
-    Init(windowProps);
-}
+    GWindow::GWindow(const WindowProps& windowProps) : enableVSync_(false) { Init(windowProps); }
 
-GWindow::~GWindow() {
-    ShutDown();
-}
+    GWindow::~GWindow() { ShutDown(); }
 
-void GWindow::OnUpdate() {
-}
+    void GWindow::OnUpdate() { 
+        glfwPollEvents();
+        context_->SwapBuffers();
+    }
 
-void GWindow::SetEventCallback(EventCallback& callback) {
-}
+    void GWindow::SetEventCallback(EventCallback& callback) { }
 
-void GWindow::SetVSync(bool enabled) {
-}
+    void GWindow::SetVSync(bool enabled) { 
+        enableVSync_ = enabled; 
+        if (enableVSync_)
+            glfwSwapInterval(1);
+        else
+            glfwSwapInterval(0);
+    }
 
-bool GWindow::IsVSync() const {
-}
+    bool GWindow::IsVSync() const { return enableVSync_; }
 
-void GWindow::Init(const WindowProps& windowProps) {
-    width_  = windowProps.width;
-    height_ = windowProps.heigth;
-    title_  = windowProps.title;
-    EGC_ASSERT_MSG(glfwInit(), "GLFW Initialize Error");
-    window_ = glfwCreateWindow(width_, height_, title_.c_str(), nullptr, nullptr);
-    EGC_ASSERT_MSG(window_, "GLFW Create Window Error");
-    auto windowPtr = GraphicsContext::Create(window_);
-}
+    void GWindow::Init(const WindowProps& windowProps)
+    {
+        width_  = windowProps.width;
+        height_ = windowProps.heigth;
+        title_  = windowProps.title;
+        if (windowCount == 0) {
+            EGC_ASSERT_MSG(glfwInit(), "GLFW Initialize Error");    
+        }
+        window_ = glfwCreateWindow(width_, height_, title_.c_str(), nullptr, nullptr);
+        ++windowCount;
+        EGC_ASSERT_MSG(window_, "GLFW Create Window Error");
+        context_ = GraphicsContext::Create(window_);
+        context_->Init();
+        // now loss
+        glfwSetWindowUserPointer(window_, nullptr);
+        SetVSync(true);
 
-void GWindow::ShutDown() {
-}
+        glfwSetWindowCloseCallback(window_, [](GLFWwindow* window) {
+
+        });
+    }
+
+    void GWindow::ShutDown() { 
+        glfwDestroyWindow(window_);
+        --windowCount;
+        if (windowCount == 0) {
+            glfwTerminate();
+        }
+    }
 
 }  // namespace EagleClaw

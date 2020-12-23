@@ -1,83 +1,44 @@
-#include "Preheader.h"
+#include "Egcpch.h"
+
 #include "EagleClaw/Core/Application.h"
+#include "EagleClaw/Renderer/Renderer.h"
 
-namespace EagleClaw {
-Application::Application() {
-}
+namespace EagleClaw
+{
+    Application* Application::instance_ = nullptr;
 
-Application::~Application() {
-}
+    Application::Application(const std::string& name) { 
+        EGC_ASSERT_MSG(!instance_, "Application already exists");
+        instance_ = this;
+        window_    = Window::Create(WindowProps(name));
 
-void Application::Run() {
-    while (true)
-        ;
-}
+        Renderer::Init();
+    }
+
+    Application::~Application() { Renderer::ShutDown();
+    }
+
+    void Application::OnEvent() { }
+
+    void Application::PushLayer(Layer* layer) {
+    }
+
+    void Application::PushLayerOverlay(Layer* layer) { 
+        stack_.PushLayerOverlay(layer);
+        layer->OnAttach();
+    }
+
+    void Application::Run()
+    {
+        while (running_) {
+            {
+                for (auto& layer : stack_) {
+                    layer->OnUpdate();
+                }
+            }
+            // ImGui
+            window_->OnUpdate();
+        }
+    }
 
 }  // namespace EagleClaw
-
-//
-//	if (glewInit() != GLEW_OK)
-//		std::cout << "error!" << std::endl;
-//
-//	std::cout << glGetString(GL_VERSION) << std::endl;
-//	// scope
-//	{
-//		GLCALL(glEnable(GL_BLEND));
-//		GLCALL(glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_DST_ALPHA));
-//
-//		Renderer renderer;
-//
-//		ImGui::CreateContext();
-//		ImGui::StyleColorsDark();
-//		ImGui_ImplGlfw_InitForOpenGL(window, true);
-//		ImGui_ImplOpenGL3_Init("#version 330");
-//
-//		auto& io = ImGui::GetIO();
-//		io.FontGlobalScale = 2;
-//
-//		test::Test* currentTest = nullptr;
-//		std::unique_ptr<test::TestMenu> testMenu =
-// std::make_unique<test::TestMenu>(currentTest); 		currentTest =
-// testMenu.get();
-// testMenu->RegisterTest<test::TestClearColor>("Clear Color");
-//		testMenu->RegisterTest<test::TestTexture2D>("Texture 2D");
-//
-//		while (!glfwWindowShouldClose(window))
-//		{
-//			renderer.Clear();
-//			ImGui_ImplOpenGL3_NewFrame();
-//			ImGui_ImplGlfw_NewFrame();
-//			ImGui::NewFrame();
-//
-//			if (currentTest)
-//			{
-//				currentTest->OnUpdate(0.0f);
-//				currentTest->OnRender();
-//				ImGui::Begin("Test");
-//				if (currentTest != testMenu.get() &&
-// ImGui::Button("<-"))
-//				{
-//					delete currentTest;
-//					currentTest = testMenu.get();
-//				}
-//				currentTest->OnImGuiRender();
-//				ImGui::End();
-//			}
-//
-//
-//			ImGui::Render();
-//			ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
-//
-//			glfwSwapBuffers(window);
-//			glfwPollEvents();
-//		}
-//		if (currentTest != testMenu.get())
-//			delete currentTest;
-//	}
-//	ImGui_ImplOpenGL3_Shutdown();
-//	ImGui_ImplGlfw_Shutdown();
-//	ImGui::DestroyContext();
-//	glfwTerminate();
-//	return 0;
-//}
-//

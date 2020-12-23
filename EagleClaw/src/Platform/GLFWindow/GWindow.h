@@ -1,43 +1,42 @@
 #pragma once
 
 #include "EagleClaw/Core/window.h"
+#include "EagleClaw/Renderer/GraphicsContext.h"
+#include <GLFW/glfw3.h>
 
-namespace EagleClaw {
 
-class GWindow : public Window {
-public:
-    GWindow(const WindowProps& windowProps);
-    ~GWindow();
+namespace EagleClaw
+{
+    class GWindow : public Window
+    {
+    public:
+        GWindow(const WindowProps& windowProps);
+        ~GWindow();
 
-    void OnUpdate() override;
+        void OnUpdate() override;
 
-    const size_t GetWidth() const override {
-        return width_;
-    }
+        const size_t GetWidth() const override { return width_; }
 
-    const size_t GetHeight() const override {
-        return height_;
-    }
+        const size_t GetHeight() const override { return height_; }
 
-    void SetEventCallback(EventCallback& callback) override;
+        void SetEventCallback(EventCallback& callback) override;
 
-    void SetVSync(bool enabled) override;
+        void SetVSync(bool enabled) override;
 
-    bool IsVSync() const override;
+        bool IsVSync() const override;
 
-    void* GetNaiveWindow() const override {
-        return window_;
-    }
+        void* GetNaiveWindow() const override { return window_; }
 
-private:
-    void Init(const WindowProps& windowProps);
-    void ShutDown();
+    private:
+        void Init(const WindowProps& windowProps);
+        void ShutDown();
 
-    GLFWwindow* window_;
-    size_t width_;
-    size_t height_;
-    std::string title_;
-    bool enableVSync_;
-};
+        std::unique_ptr<GraphicsContext> context_;
+        GLFWwindow* window_;
+        size_t width_;
+        size_t height_;
+        std::string title_;
+        bool enableVSync_;
+    };
 
 }  // namespace EagleClaw
