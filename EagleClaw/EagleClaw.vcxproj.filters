@@ -117,6 +117,9 @@
     <ClInclude Include="src\Platform\OpenGL\GLTexture.h">
       <Filter>src\Platform\OpenGL</Filter>
     </ClInclude>
+    <ClInclude Include="src\Platform\OpenGL\GLVertexArray.h">
+      <Filter>src\Platform\OpenGL</Filter>
+    </ClInclude>
     <ClInclude Include="vendor\ImGuizmo\ImGuizmo.h">
       <Filter>vendor\ImGuizmo</Filter>
     </ClInclude>
@@ -1232,6 +1235,9 @@
     <ClCompile Include="src\EagleClaw\Renderer\Renderer.cpp">
       <Filter>src\EagleClaw\Renderer</Filter>
     </ClCompile>
+    <ClCompile Include="src\EagleClaw\Renderer\VertexArray.cpp">
+      <Filter>src\EagleClaw\Renderer</Filter>
+    </ClCompile>
     <ClCompile Include="src\Egcpch.cpp">
       <Filter>src</Filter>
     </ClCompile>
@@ -1248,6 +1254,9 @@
       <Filter>src\Platform\OpenGL</Filter>
     </ClCompile>
     <ClCompile Include="src\Platform\OpenGL\GLTexture.cpp">
+      <Filter>src\Platform\OpenGL</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Platform\OpenGL\GLVertexArray.cpp">
       <Filter>src\Platform\OpenGL</Filter>
     </ClCompile>
     <ClCompile Include="vendor\ImGuizmo\ImGuizmo.cpp">

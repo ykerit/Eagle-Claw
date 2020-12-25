@@ -10,6 +10,8 @@
 #error EagleClaw only support Windows!
 #endif
 
+#include <iostream>
+
 #define EGC_ASSERT(x) \
     if (!(x))         \
         __debugbreak();

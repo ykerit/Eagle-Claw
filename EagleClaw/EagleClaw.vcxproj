@@ -154,6 +154,7 @@
     <ClInclude Include="src\Platform\OpenGL\GLContext.h" />
     <ClInclude Include="src\Platform\OpenGL\GLShader.h" />
     <ClInclude Include="src\Platform\OpenGL\GLTexture.h" />
+    <ClInclude Include="src\Platform\OpenGL\GLVertexArray.h" />
     <ClInclude Include="vendor\ImGuizmo\ImGuizmo.h" />
     <ClInclude Include="vendor\glm\glm\common.hpp" />
     <ClInclude Include="vendor\glm\glm\detail\_features.hpp" />
@@ -527,6 +528,7 @@
     <ClCompile Include="src\EagleClaw\Renderer\Buffer.cpp" />
     <ClCompile Include="src\EagleClaw\Renderer\GraphicsContext.cpp" />
     <ClCompile Include="src\EagleClaw\Renderer\Renderer.cpp" />
+    <ClCompile Include="src\EagleClaw\Renderer\VertexArray.cpp" />
     <ClCompile Include="src\Egcpch.cpp">
       <PrecompiledHeader>Create</PrecompiledHeader>
     </ClCompile>
@@ -535,6 +537,7 @@
     <ClCompile Include="src\Platform\OpenGL\GLContext.cpp" />
     <ClCompile Include="src\Platform\OpenGL\GLShader.cpp" />
     <ClCompile Include="src\Platform\OpenGL\GLTexture.cpp" />
+    <ClCompile Include="src\Platform\OpenGL\GLVertexArray.cpp" />
     <ClCompile Include="vendor\ImGuizmo\ImGuizmo.cpp">
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
     </ClCompile>

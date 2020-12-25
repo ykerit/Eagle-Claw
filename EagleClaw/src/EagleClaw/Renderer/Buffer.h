@@ -2,30 +2,34 @@
 
 namespace EagleClaw
 {
-    enum BufferDataType
+    enum class BufferDataType
     {
         None = 0,
         Float,
         Float2,
         Float3,
+        Float4,
         Int,
         Int2,
         Int3,
+        Int4,
         Bool,
         Mat3,
         Mat4
     };
 
-    static size_t GetSizeOfBufferDataType(const BufferDataType type)
+    static size_t GetSizeOfBufferDataType(BufferDataType type)
     {
         switch (type)
         {
             case BufferDataType::Float: return 4;
             case BufferDataType::Float2: return 8;
             case BufferDataType::Float3: return 12;
+            case BufferDataType::Float4: return 16;
             case BufferDataType::Int: return 4;
             case BufferDataType::Int2: return 8;
             case BufferDataType::Int3: return 12;
+            case BufferDataType::Int4: return 16;
             case BufferDataType::Bool: return 1;
             case BufferDataType::Mat3: return 32;
             case BufferDataType::Mat4: return 64;
@@ -47,6 +51,26 @@ namespace EagleClaw
         BufferElement(const BufferDataType type_, const std::string& name_, const size_t size_, const bool normalized_)
             : type(type_), name(name_), offset(0), size(size_), normalized(normalized_)
         {
+        }
+
+        size_t GetComponentCount() const
+        {
+            switch (type)
+            {
+                case BufferDataType::Float: return 1;
+                case BufferDataType::Float2: return 2;
+                case BufferDataType::Float3: return 3;
+                case BufferDataType::Float4: return 4;
+                case BufferDataType::Int: return 1;
+                case BufferDataType::Int2: return 2;
+                case BufferDataType::Int3: return 3;
+                case BufferDataType::Int4: return 3;
+                case BufferDataType::Bool: return 1;
+                case BufferDataType::Mat3: return 3;
+                case BufferDataType::Mat4: return 4;
+            }
+            EGC_ASSERT_MSG(false, "Do Not Suppurt BufferDataType");
+            return 0;
         }
     };
 
