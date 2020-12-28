@@ -10,6 +10,3 @@
 #include "EagleClaw/Renderer/VertexArray.h"
 #include "EagleClaw/Renderer/Shader.h"
 #include "EagleClaw/Renderer/Texture.h"
-
-// Entry Point
-#include "EagleClaw/Core/EntryPoint.h"
