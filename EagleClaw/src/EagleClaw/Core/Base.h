@@ -1,20 +1,8 @@
 #pragma once
 
-#ifdef EGC_PLATFORM_WINDOWS
-#ifdef EGC_BUILD_DLL
-#define EGC_API __declspec(dllexport)
-#else
-#define EGC_API __declspec(dllimport)
-#endif
-#else
-#error EagleClaw only support Windows!
-#endif
-
 #include <iostream>
 
-#define EGC_ASSERT(x) \
-    if (!(x))         \
-        __debugbreak();
+#define EGC_ASSERT(x) assert(x);
 
 #define EGC_ASSERT_MSG(condition, message)                                                                              \
     do                                                                                                                  \

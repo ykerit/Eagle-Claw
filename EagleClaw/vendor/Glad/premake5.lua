@@ -21,6 +21,14 @@ project "Glad"
     filter "system:windows"
         systemversion "latest"
 
+    filter "system:macosx"
+        systemversion "latest"
+        defines
+        {
+            "GLAD_GLAPI_EXPORT",
+            "GLAD_GLAPI_EXPORT_BUILD",
+        }
+
     filter "configurations:Debug"
         runtime "Debug"
         symbols "on"

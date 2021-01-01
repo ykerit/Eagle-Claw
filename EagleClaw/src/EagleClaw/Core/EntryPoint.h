@@ -1,7 +1,5 @@
 #pragma once
 
-#ifdef EGC_PLATFORM_WINDOWS
-
 extern EagleClaw::Application* EagleClaw::CreateApplication();
 
 int main()
@@ -13,5 +11,3 @@ int main()
     app->Run();
     delete app;
 }
-
-#endif

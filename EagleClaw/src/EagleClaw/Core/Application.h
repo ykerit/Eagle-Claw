@@ -6,6 +6,8 @@
 #include "EagleClaw/Core/Event.h"
 #include "EagleClaw/Core/ApplicationEvent.h"
 
+int main();
+
 namespace EagleClaw
 {
     class Application
@@ -34,6 +36,7 @@ namespace EagleClaw
         LayerStack stack_;
         bool running_ = true;
         static Application* instance_;
+        friend int ::main();
     };
 
     Application* CreateApplication();

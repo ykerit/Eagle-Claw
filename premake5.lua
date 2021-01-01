@@ -1,5 +1,3 @@
-include "./vendor/premake/premake_customization/solution_items.lua"
-
 workspace "OpenGL"
 	architecture "x86_64"
 	startproject "Sandbox"

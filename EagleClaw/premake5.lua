@@ -27,8 +27,6 @@ project "EagleClaw"
 	{
 		"_CRT_SECURE_NO_WARNINGS",
 		"GLFW_INCLUDE_NONE",
-		"EGC_PLATFORM_WINDOWS",
-		"EGC_BUILD_DLL"
 	}
 
 	includedirs
@@ -48,7 +46,6 @@ project "EagleClaw"
 		"GLFW",
 		"Glad",
 		"ImGui",
-		"opengl32.lib"
 	}
 
 	filter "files:vendor/ImGuizmo/**.cpp"
@@ -56,3 +53,27 @@ project "EagleClaw"
 
 	filter "system:windows"
 		systemversion "latest"
+		defines
+		{
+		}
+		links
+		{
+			"opengl32.lib"
+		}
+		
+	filter "system:macosx"
+		kind "SharedLib"
+		defines 
+		{
+			"CFG_MACOS",
+			"__APPLE__"
+		}
+		links
+		{
+			"OpenGL.framework",
+			"Cocoa.framework",
+			"OpenGL.framework",
+			"IOKit.framework",
+			"CoreFoundation.framework",
+			"CoreVideo.framework"
+		}

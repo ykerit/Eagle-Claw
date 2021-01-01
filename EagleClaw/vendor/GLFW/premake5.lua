@@ -42,6 +42,28 @@ project "GLFW"
 			"_GLFW_X11"
 		}
 
+	filter "system:macosx"
+		systemversion "latest"
+		staticruntime "On"
+		pic "On"
+		files 
+		{
+			"src/cocoa_init.m",
+			"src/cocoa_joystick.m",
+			"src/cocoa_monitor.m",
+			"src/cocoa_time.c",
+			"src/posix_thread.c",
+			"src/cocoa_window.m",
+			"src/egl_context.c",
+			"src/nsgl_context.m",
+			"src/osmesa_context.c"
+		}
+		defines 
+		{
+			"_GLFW_COCOA"
+		}
+
+
 	filter "system:windows"
 		systemversion "latest"
 		staticruntime "On"

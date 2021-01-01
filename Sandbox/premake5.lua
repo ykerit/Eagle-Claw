@@ -15,7 +15,6 @@ project "Sandbox"
 
 	defines
 	{
-		"EGC_PLATFORM_WINDOWS"
 	}
 
 	includedirs
@@ -32,4 +31,7 @@ project "Sandbox"
 	}
 
 	filter "system:windows"
+		systemversion "latest"
+	
+	filter "system:macosx"
 		systemversion "latest"
