@@ -17,14 +17,15 @@ Sandbox2D::Sandbox2D() : Layer("Sandbox2D")
         layout(location = 0) in vec2 a_Position;
         out vec3 v_Position;
 
-        void main() 
+        void main()
         {
-            v_Position = vec3(vec2, 1.0);
+            v_Position = vec3(a_Position, 1.0);
         }
     )";
 
     std::string fragmentSrc = R"(
         #version 330 core
+        out vec4 color;
         in vec3 v_Position;
 
         void main()
@@ -40,7 +41,14 @@ void Sandbox2D::OnAttach() { }
 
 void Sandbox2D::OnDetach() { }
 
-void Sandbox2D::OnUpdate() { }
+void Sandbox2D::OnUpdate() { 
+    EagleClaw::RendererCommand::SetClearColor({ 0.1f, 0.1f, 0.1f, 1.0f });
+    EagleClaw::RendererCommand::Clear();
+
+    EagleClaw::Renderer::BeginScence();
+    EagleClaw::Renderer::Submit(shader_, vertexArray_);
+    EagleClaw::Renderer::EndScence();
+}
 
 void Sandbox2D::OnImGuiRender() { }
 

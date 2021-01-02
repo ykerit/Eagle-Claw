@@ -6,6 +6,10 @@
 #include "EagleClaw/Core/Log.h"
 
 // For Renderer
+#include "EagleClaw/Renderer/Renderer.h"
+#include "EagleClaw/Renderer/Renderer2D.h"
+#include "EagleClaw/Renderer/RendererCommand.h"
+
 #include "EagleClaw/Renderer/Buffer.h"
 #include "EagleClaw/Renderer/Shader.h"
 #include "EagleClaw/Renderer/Texture.h"

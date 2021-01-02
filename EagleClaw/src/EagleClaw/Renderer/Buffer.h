@@ -81,7 +81,7 @@ namespace EagleClaw
         using Const_LayoutIter = std::vector<BufferElement>::const_iterator;
 
         BufferLayout() = default;
-        BufferLayout(std::initializer_list<BufferElement> elements) : elements_(elements_) { CalculateOffsetAndStride(); }
+        BufferLayout(std::initializer_list<BufferElement> elements) : elements_(elements) { CalculateOffsetAndStride(); }
 
         const size_t GetStride() const { return stride_; }
         const std::vector<BufferElement>& GetElements() const { return elements_; }

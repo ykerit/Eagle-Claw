@@ -19,10 +19,12 @@ namespace EagleClaw
         shader->SetMat4("u_ViewProjection", glm::mat4(1.0f));
         shader->SetMat4("u_Transform", transform);
         vertexArray->Bind();
+        RendererCommand::DrawIndexed(vertexArray);
     }
 
-    void BeginScence() { }
+    void Renderer::BeginScence() {
+    }
 
-    void EndScence() { }
+    void Renderer::EndScence() { }
 
 }  // namespace EagleClaw
