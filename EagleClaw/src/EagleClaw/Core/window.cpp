@@ -1,6 +1,7 @@
 #include "Egcpch.h"
 
 #include "EagleClaw/Core/window.h"
+
 #include "Platform/GLFWindow/GWindow.h"
 
 namespace EagleClaw

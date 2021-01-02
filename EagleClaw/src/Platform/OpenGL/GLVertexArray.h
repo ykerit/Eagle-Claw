@@ -22,4 +22,4 @@ namespace EagleClaw
         std::vector<VertexBuffer::VTBPtr> vertexBuffers_;
         IndexBuffer::IDBPtr indexBuffer_;
     };
-}
+}  // namespace EagleClaw

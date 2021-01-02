@@ -7,6 +7,6 @@
 
 // For Renderer
 #include "EagleClaw/Renderer/Buffer.h"
-#include "EagleClaw/Renderer/VertexArray.h"
 #include "EagleClaw/Renderer/Shader.h"
 #include "EagleClaw/Renderer/Texture.h"
+#include "EagleClaw/Renderer/VertexArray.h"

@@ -2,8 +2,8 @@
 
 #include "Platform/GLFWindow/GWindow.h"
 
-#include "EagleClaw/Renderer/GraphicsContext.h"
 #include "EagleClaw/Core/ApplicationEvent.h"
+#include "EagleClaw/Renderer/GraphicsContext.h"
 
 namespace EagleClaw
 {
@@ -13,16 +13,16 @@ namespace EagleClaw
 
     GWindow::~GWindow() { ShutDown(); }
 
-    void GWindow::OnUpdate() { 
+    void GWindow::OnUpdate()
+    {
         glfwPollEvents();
         context_->SwapBuffers();
     }
 
-    void GWindow::SetEventCallback(const EventCallback& callback) { 
-        meta_.callback = callback;
-    }
+    void GWindow::SetEventCallback(const EventCallback& callback) { meta_.callback = callback; }
 
-    void GWindow::SetVSync(bool enabled) { 
+    void GWindow::SetVSync(bool enabled)
+    {
         meta_.enableVSync = enabled;
         if (meta_.enableVSync)
             glfwSwapInterval(1);
@@ -37,8 +37,9 @@ namespace EagleClaw
         meta_.width  = windowProps.width;
         meta_.height = windowProps.heigth;
         meta_.title  = windowProps.title;
-        if (windowCount == 0) {
-            EGC_ASSERT_MSG(glfwInit(), "GLFW Initialize Error");    
+        if (windowCount == 0)
+        {
+            EGC_ASSERT_MSG(glfwInit(), "GLFW Initialize Error");
         }
         window_ = glfwCreateWindow(meta_.width, meta_.height, meta_.title.c_str(), nullptr, nullptr);
         ++windowCount;
@@ -56,10 +57,12 @@ namespace EagleClaw
         });
     }
 
-    void GWindow::ShutDown() { 
+    void GWindow::ShutDown()
+    {
         glfwDestroyWindow(window_);
         --windowCount;
-        if (windowCount == 0) {
+        if (windowCount == 0)
+        {
             glfwTerminate();
         }
     }

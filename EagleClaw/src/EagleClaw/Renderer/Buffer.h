@@ -48,8 +48,8 @@ namespace EagleClaw
 
         BufferElement() = default;
 
-        BufferElement(const BufferDataType type_, const std::string& name_, const size_t size_, const bool normalized_)
-            : type(type_), name(name_), offset(0), size(size_), normalized(normalized_)
+        BufferElement(const BufferDataType type_, const std::string& name_, const bool normalized_ = false)
+            : type(type_), name(name_), offset(0), size(GetSizeOfBufferDataType(type_)), normalized(normalized_)
         {
         }
 
@@ -81,10 +81,7 @@ namespace EagleClaw
         using Const_LayoutIter = std::vector<BufferElement>::const_iterator;
 
         BufferLayout() = default;
-        explicit BufferLayout(std::initializer_list<BufferElement> elements) : elements_(elements_)
-        {
-            CalculateOffsetAndStride();
-        }
+        BufferLayout(std::initializer_list<BufferElement> elements) : elements_(elements_) { CalculateOffsetAndStride(); }
 
         const size_t GetStride() const { return stride_; }
         const std::vector<BufferElement>& GetElements() const { return elements_; }
@@ -138,7 +135,7 @@ namespace EagleClaw
 
         virtual const size_t GetCount() const = 0;
 
-        IDBPtr Create(const uint32_t* indices, const size_t count);
+        static IDBPtr Create(const uint32_t* indices, const size_t count);
     };
 
 }  // namespace EagleClaw

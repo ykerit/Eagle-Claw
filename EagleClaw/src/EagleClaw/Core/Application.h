@@ -1,10 +1,10 @@
 #pragma once
 
-#include "EagleClaw/Core/Base.h"
-#include "EagleClaw/Core/window.h"
-#include "EagleClaw/Core/LayerStack.h"
-#include "EagleClaw/Core/Event.h"
 #include "EagleClaw/Core/ApplicationEvent.h"
+#include "EagleClaw/Core/Base.h"
+#include "EagleClaw/Core/Event.h"
+#include "EagleClaw/Core/LayerStack.h"
+#include "EagleClaw/Core/window.h"
 
 int main();
 

@@ -37,7 +37,7 @@ template<async_overflow_policy OverflowPolicy = async_overflow_policy::block>
 struct async_factory_impl
 {
     template<typename Sink, typename... SinkArgs>
-    static std::shared_ptr<async_logger> create(std::string logger_name, SinkArgs &&... args)
+    static std::shared_ptr<async_logger> zreate(std::string logger_name, SinkArgs &&... args)
     {
         auto &registry_inst = details::registry::instance();
 

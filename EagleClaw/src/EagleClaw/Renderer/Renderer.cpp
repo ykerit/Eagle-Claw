@@ -1,17 +1,28 @@
 #include "Egcpch.h"
+
 #include "EagleClaw/Renderer/Renderer.h"
+
+#include "EagleClaw/Renderer/RendererCommand.h"
 
 namespace EagleClaw
 {
+    void Renderer::Init() { RendererCommand::Init(); }
 
-void Renderer::Init() { 
+    void Renderer::ShutDown() { }
 
-}
+    void Renderer::OnWindowResize(size_t width, size_t height) { RendererCommand::SetViewport(0, 0, width, height); }
 
-void Renderer::ShutDown() { }
+    void Renderer::Submit(const std::shared_ptr<Shader>& shader, const std::shared_ptr<VertexArray>& vertexArray,
+                          const glm::mat4& transform)
+    {
+        shader->Bind();
+        shader->SetMat4("u_ViewProjection", glm::mat4(1.0f));
+        shader->SetMat4("u_Transform", transform);
+        vertexArray->Bind();
+    }
 
-void Renderer::OnWindowResize() { }
+    void BeginScence() { }
 
-void Renderer::Submit() { }
+    void EndScence() { }
 
-}
+}  // namespace EagleClaw

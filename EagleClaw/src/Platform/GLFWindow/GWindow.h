@@ -1,9 +1,9 @@
 #pragma once
 
-#include "EagleClaw/Core/window.h"
-#include "EagleClaw/Renderer/GraphicsContext.h"
 #include <GLFW/glfw3.h>
 
+#include "EagleClaw/Core/window.h"
+#include "EagleClaw/Renderer/GraphicsContext.h"
 
 namespace EagleClaw
 {

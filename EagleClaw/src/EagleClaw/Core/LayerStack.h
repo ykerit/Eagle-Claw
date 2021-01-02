@@ -1,8 +1,8 @@
 #pragma once
 
-#include "EagleClaw/Core/Layer.h"
-
 #include <vector>
+
+#include "EagleClaw/Core/Layer.h"
 
 namespace EagleClaw
 {
@@ -10,20 +10,25 @@ namespace EagleClaw
     {
     public:
         LayerStack() = default;
-        ~LayerStack() { 
-            for (auto& layer : layers_) {
+        ~LayerStack()
+        {
+            for (auto& layer : layers_)
+            {
                 layer->OnDetach();
                 delete layer;
             }
         }
 
-        void PushLayerOverlay(Layer* layer) { 
+        void PushLayerOverlay(Layer* layer)
+        {
             layers_.emplace_back(layer);
             ++layerInsertIndex;
         }
-        void PopLayerOverlay(Layer* layer) { 
+        void PopLayerOverlay(Layer* layer)
+        {
             auto iter = std::find(layers_.begin(), layers_.begin() + layerInsertIndex, layer);
-            if (iter != layers_.begin() + layerInsertIndex) {
+            if (iter != layers_.begin() + layerInsertIndex)
+            {
                 layer->OnDetach();
                 layers_.erase(iter);
                 --layerInsertIndex;

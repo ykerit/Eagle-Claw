@@ -20,5 +20,10 @@ app_files = get_format_file(os.path.join(root_path, app))
 all_files = dll_files + app_files
 
 for file in all_files:
-    cmd = 'clang-format.exe -i ' + file
+    import sys
+    cmd = ''
+    if sys.platform == 'darwin' or sys.platform == 'linux':
+        cmd = 'clang-format -i ' + file
+    else:
+        cmd = 'clang-format.exe -i ' + file
     os.popen(cmd)

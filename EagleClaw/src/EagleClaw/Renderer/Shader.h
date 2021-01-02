@@ -23,8 +23,8 @@ namespace EagleClaw
 
         virtual const std::string GetName() const = 0;
 
-        static std::shared_ptr<Shader> create(const std::string& filepath);
-        static std::shared_ptr<Shader> create(const std::string& name, const std::string& vertexSrc,
+        static std::shared_ptr<Shader> Create(const std::string& filepath);
+        static std::shared_ptr<Shader> Create(const std::string& name, const std::string& vertexSrc,
                                               const std::string& fragmentSrc);
     };
 

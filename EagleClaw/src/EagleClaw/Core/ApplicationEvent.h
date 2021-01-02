@@ -17,4 +17,4 @@ namespace EagleClaw
     public:
         WindowResizeEvent() = default;
     };
-}
+}  // namespace EagleClaw

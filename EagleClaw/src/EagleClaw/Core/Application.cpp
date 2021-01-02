@@ -1,50 +1,53 @@
 #include "Egcpch.h"
 
 #include "EagleClaw/Core/Application.h"
-#include "EagleClaw/Renderer/Renderer.h"
 
+#include "EagleClaw/Renderer/Renderer.h"
 
 namespace EagleClaw
 {
-
     Application* Application::instance_ = nullptr;
 
-    Application::Application(const std::string& name) { 
+    Application::Application(const std::string& name)
+    {
         EGC_ASSERT_MSG(!instance_, "Application already exists");
         instance_ = this;
-        window_    = Window::Create(WindowProps(name));
+        window_   = Window::Create(WindowProps(name));
         window_->SetEventCallback(BIND_EVENT_FUNC(Application::OnEvent));
         Renderer::Init();
     }
 
-    Application::~Application() { Renderer::ShutDown();
-    }
+    Application::~Application() { Renderer::ShutDown(); }
 
-    void Application::OnEvent(Event& event) { 
+    void Application::OnEvent(Event& event)
+    {
         EventDispatcher dispatcher(event);
         dispatcher.Dispatch<WindowCloseEvent>(BIND_EVENT_FUNC(Application::OnWindowClose));
-        //dispatcher.Dispatch<WindowResizeEvent>(BIND_EVENT_FUNC(Application::OnWindowResize));
+        // dispatcher.Dispatch<WindowResizeEvent>(BIND_EVENT_FUNC(Application::OnWindowResize));
 
-        for (auto it = stack_.rbegin(); it != stack_.rend(); ++it) {
+        for (auto it = stack_.rbegin(); it != stack_.rend(); ++it)
+        {
             if (event.handled)
                 break;
             (*it)->OnEvent(event);
         }
     }
 
-    void Application::PushLayer(Layer* layer) {
-    }
+    void Application::PushLayer(Layer* layer) { }
 
-    void Application::PushLayerOverlay(Layer* layer) { 
+    void Application::PushLayerOverlay(Layer* layer)
+    {
         stack_.PushLayerOverlay(layer);
         layer->OnAttach();
     }
 
     void Application::Run()
     {
-        while (running_) {
+        while (running_)
+        {
             {
-                for (auto& layer : stack_) {
+                for (auto& layer : stack_)
+                {
                     layer->OnUpdate();
                 }
             }
@@ -53,11 +56,11 @@ namespace EagleClaw
         }
     }
 
-    bool Application::OnWindowClose(WindowCloseEvent& e) { 
+    bool Application::OnWindowClose(WindowCloseEvent& e)
+    {
         running_ = false;
         return true;
     }
-    
 
     bool Application::OnWindowResize(WindowResizeEvent& e) { return false; }
 

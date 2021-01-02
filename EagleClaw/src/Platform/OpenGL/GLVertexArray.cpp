@@ -6,7 +6,8 @@
 
 namespace EagleClaw
 {
-    static GLenum BufferDateType2GLType(BufferDataType type) {
+    static GLenum BufferDateType2GLType(BufferDataType type)
+    {
         switch (type)
         {
             case BufferDataType::Float: return GL_FLOAT;
@@ -28,13 +29,15 @@ namespace EagleClaw
 
     GLVertexArray::~GLVertexArray() { GLCALL(glDeleteVertexArrays(1, &renderID_)); }
 
-    void GLVertexArray::AddVertexBuffer(const VertexBuffer::VTBPtr& vertexBuffer) { 
+    void GLVertexArray::AddVertexBuffer(const VertexBuffer::VTBPtr& vertexBuffer)
+    {
         EGC_ASSERT_MSG(vertexBuffer->GetLayout().GetElements().size(), "Vertex Buffer has no layout");
         GLCALL(glBindVertexArray(renderID_));
         vertexBuffer->Bind();
 
         const auto& layout = vertexBuffer->GetLayout();
-        for (const auto& element : layout) {
+        for (const auto& element : layout)
+        {
             switch (element.type)
             {
                 case BufferDataType::Float:
@@ -48,9 +51,9 @@ namespace EagleClaw
                 case BufferDataType::Bool:
                 {
                     GLCALL(glEnableVertexAttribArray(vertexBufferIdx_));
-                    glVertexAttribPointer(vertexBufferIdx_, element.GetComponentCount(), 
-                        BufferDateType2GLType(element.type), element.normalized ? GL_TRUE : GL_FALSE,
-                        layout.GetStride(), (void*)element.offset);
+                    glVertexAttribPointer(vertexBufferIdx_, element.GetComponentCount(), BufferDateType2GLType(element.type),
+                                          element.normalized ? GL_TRUE : GL_FALSE, layout.GetStride(),
+                                          (void*)element.offset);
                     ++vertexBufferIdx_;
                     break;
                 }
@@ -58,7 +61,8 @@ namespace EagleClaw
                 case BufferDataType::Mat4:
                 {
                     uint8_t count = element.GetComponentCount();
-                    for (uint8_t i = 0; i < count; ++i) {
+                    for (uint8_t i = 0; i < count; ++i)
+                    {
                         glEnableVertexAttribArray(vertexBufferIdx_);
                         glVertexAttribPointer(vertexBufferIdx_, count, BufferDateType2GLType(element.type),
                                               element.normalized ? GL_TRUE : GL_FALSE, layout.GetStride(),
@@ -74,7 +78,8 @@ namespace EagleClaw
         vertexBuffers_.push_back(vertexBuffer);
     }
 
-    void GLVertexArray::SetIndexBuffer(const IndexBuffer::IDBPtr& indexBuffer) { 
+    void GLVertexArray::SetIndexBuffer(const IndexBuffer::IDBPtr& indexBuffer)
+    {
         GLCALL(glBindVertexArray(renderID_));
         indexBuffer->Bind();
         indexBuffer_ = indexBuffer;
