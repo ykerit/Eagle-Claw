@@ -77,7 +77,7 @@ namespace EagleClaw
     class BufferLayout
     {
     public:
-        using LayoutIter       = std::vector<BufferElement>::iterator;
+        using LayoutIter = std::vector<BufferElement>::iterator;
         using Const_LayoutIter = std::vector<BufferElement>::const_iterator;
 
         BufferLayout() = default;
@@ -111,12 +111,12 @@ namespace EagleClaw
     public:
         using VTBPtr = std::shared_ptr<VertexBuffer>;
 
-        virtual ~VertexBuffer()                                   = default;
-        virtual void Bind() const                                 = 0;
-        virtual void Unbind() const                               = 0;
+        virtual ~VertexBuffer() = default;
+        virtual void Bind() const = 0;
+        virtual void Unbind() const = 0;
         virtual void SetData(const void* data, const size_t size) = 0;
 
-        virtual const BufferLayout& GetLayout() const      = 0;
+        virtual const BufferLayout& GetLayout() const = 0;
         virtual void SetLayout(const BufferLayout& layout) = 0;
 
         static VTBPtr Create(const size_t size);
@@ -130,7 +130,7 @@ namespace EagleClaw
 
         virtual ~IndexBuffer() = default;
 
-        virtual void Bind() const   = 0;
+        virtual void Bind() const = 0;
         virtual void Unbind() const = 0;
 
         virtual const size_t GetCount() const = 0;

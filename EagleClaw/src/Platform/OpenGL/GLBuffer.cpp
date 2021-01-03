@@ -40,8 +40,8 @@ namespace EagleClaw
 
     GLIndexBuffer::~GLIndexBuffer() { GLCALL(glDeleteBuffers(1, &rendererID_)); }
 
-    void GLIndexBuffer::Bind() const { GLCALL(glBindBuffer(GL_ARRAY_BUFFER, rendererID_)); }
+    void GLIndexBuffer::Bind() const { GLCALL(glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, rendererID_)); }
 
-    void GLIndexBuffer::Unbind() const { GLCALL(glBindBuffer(GL_ARRAY_BUFFER, 0)); }
+    void GLIndexBuffer::Unbind() const { GLCALL(glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0)); }
 
 }  // namespace EagleClaw

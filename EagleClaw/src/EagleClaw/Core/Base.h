@@ -4,15 +4,15 @@
 
 #define EGC_ASSERT(x) assert(x);
 
-#define EGC_ASSERT_MSG(condition, message)                                                                              \
-    do                                                                                                                  \
-    {                                                                                                                   \
-        if (!(condition))                                                                                               \
-        {                                                                                                               \
+#define EGC_ASSERT_MSG(condition, message)                                                                                \
+    do                                                                                                                    \
+    {                                                                                                                     \
+        if (!(condition))                                                                                                 \
+        {                                                                                                                 \
             std::cerr << "Assertion `" #condition "` failed in: " << __FILE__ << " line: " << __LINE__ << ": " << message \
-                      << std::endl;                                                                                     \
-            std::terminate();                                                                                           \
-        }                                                                                                               \
+                      << std::endl;                                                                                       \
+            std::terminate();                                                                                             \
+        }                                                                                                                 \
     } while (false)
 
 #define GLCALL(x)                                     \

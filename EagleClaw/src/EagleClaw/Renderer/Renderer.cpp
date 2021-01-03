@@ -22,8 +22,7 @@ namespace EagleClaw
         RendererCommand::DrawIndexed(vertexArray);
     }
 
-    void Renderer::BeginScence() {
-    }
+    void Renderer::BeginScence() { }
 
     void Renderer::EndScence() { }
 

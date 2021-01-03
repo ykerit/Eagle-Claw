@@ -12,7 +12,7 @@ namespace EagleClaw
     {
         EGC_ASSERT_MSG(!instance_, "Application already exists");
         instance_ = this;
-        window_   = Window::Create(WindowProps(name));
+        window_ = Window::Create(WindowProps(name));
         window_->SetEventCallback(BIND_EVENT_FUNC(Application::OnEvent));
         Renderer::Init();
     }
@@ -23,7 +23,7 @@ namespace EagleClaw
     {
         EventDispatcher dispatcher(event);
         dispatcher.Dispatch<WindowCloseEvent>(BIND_EVENT_FUNC(Application::OnWindowClose));
-        // dispatcher.Dispatch<WindowResizeEvent>(BIND_EVENT_FUNC(Application::OnWindowResize));
+        dispatcher.Dispatch<WindowResizeEvent>(BIND_EVENT_FUNC(Application::OnWindowResize));
 
         for (auto it = stack_.rbegin(); it != stack_.rend(); ++it)
         {

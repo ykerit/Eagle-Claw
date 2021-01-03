@@ -1,6 +1,7 @@
 #pragma once
 
 #include <string>
+#include <sstream>
 
 namespace EagleClaw
 {
@@ -15,11 +16,11 @@ namespace EagleClaw
 
     enum EventCategory
     {
-        None             = 0,
+        None = 0,
         ApplicationEvent = BIT(0),
-        InputEvent       = BIT(1),
-        KeyBoardEvent    = BIT(2),
-        MouseEvent       = BIT(3)
+        InputEvent = BIT(1),
+        KeyBoardEvent = BIT(2),
+        MouseEvent = BIT(3)
     };
 
 #define IMP_EVENT_TYPE(type)                                       \
@@ -37,7 +38,7 @@ namespace EagleClaw
 
         virtual ~Event() = default;
 
-        virtual EventType GetType() const   = 0;
+        virtual EventType GetType() const = 0;
         virtual const char* GetName() const = 0;
 
         virtual int GetCategoryFlags() const = 0;

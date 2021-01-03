@@ -34,9 +34,9 @@ namespace EagleClaw
 
     void GWindow::Init(const WindowProps& windowProps)
     {
-        meta_.width  = windowProps.width;
+        meta_.width = windowProps.width;
         meta_.height = windowProps.heigth;
-        meta_.title  = windowProps.title;
+        meta_.title = windowProps.title;
         if (windowCount == 0)
         {
             EGC_ASSERT_MSG(glfwInit(), "GLFW Initialize Error");
@@ -54,6 +54,17 @@ namespace EagleClaw
             auto& meta = *static_cast<WindowMeta*>(glfwGetWindowUserPointer(window));
             WindowCloseEvent event;
             meta.callback(event);
+        });
+
+        glfwSetWindowSizeCallback(window_, [](GLFWwindow* window, int width, int height) {
+            auto& meta = *static_cast<WindowMeta*>(glfwGetWindowUserPointer(window));
+            meta.width = width;
+            meta.height = height;
+            WindowResizeEvent event(width, height);
+            meta.callback(event);
+        });
+
+        glfwSetKeyCallback(window_, [](GLFWwindow* window, int key, int sancode, int action, int mods) { std::cout << key << std::endl;
         });
     }
 

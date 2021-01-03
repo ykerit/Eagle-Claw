@@ -6,7 +6,7 @@
 class Sandbox : public EagleClaw::Application
 {
 public:
-    Sandbox() : Application("Sandbox") { PushLayer(new Sandbox2D()); }
+    Sandbox() : Application("Sandbox") { PushLayerOverlay(new Sandbox2D()); }
 
     ~Sandbox() { }
 };

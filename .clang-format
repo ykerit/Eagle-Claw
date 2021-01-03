@@ -3,9 +3,9 @@ Language:        Cpp
 AccessModifierOffset: -4
 BasedOnStyle: Google
 AlignConsecutiveMacros: 'true'
-AlignConsecutiveAssignments: 'true'
+AlignConsecutiveAssignments: 'false'
 AllowShortCaseLabelsOnASingleLine: 'true'
-AllowShortBlocksOnASingleLine: 'Empty'
+AllowShortBlocksOnASingleLine: 'false'
 AllowShortIfStatementsOnASingleLine: 'Never'
 AllowShortLoopsOnASingleLine: 'false'
 BreakBeforeBraces: Allman

@@ -21,10 +21,10 @@ namespace EagleClaw
 
     void GLRendererAPI::Init()
     {
-        // GLCALL(glEnable(GL_DEBUG_OUTPUT));
-        // GLCALL(glEnable(GL_DEBUG_OUTPUT_SYNCHRONOUS));
-        // GLCALL(glDebugMessageCallback(OpenGLMSGCallback, nullptr));
-        // GLCALL(glDebugMessageControl(GL_DONT_CARE, GL_DONT_CARE, GL_DEBUG_SEVERITY_NOTIFICATION, 0, NULL, GL_FALSE));
+        GLCALL(glEnable(GL_DEBUG_OUTPUT));
+        GLCALL(glEnable(GL_DEBUG_OUTPUT_SYNCHRONOUS));
+        GLCALL(glDebugMessageCallback(OpenGLMSGCallback, nullptr));
+        GLCALL(glDebugMessageControl(GL_DONT_CARE, GL_DONT_CARE, GL_DEBUG_SEVERITY_NOTIFICATION, 0, NULL, GL_FALSE));
 
         GLCALL(glEnable(GL_BLEND));
         GLCALL(glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_DST_ALPHA));

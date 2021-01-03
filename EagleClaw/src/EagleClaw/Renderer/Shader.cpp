@@ -14,6 +14,11 @@ namespace EagleClaw
         return std::make_shared<GLShader>(name, vertexSrc, fragmentSrc);
     }
 
+    std::shared_ptr<EagleClaw::Shader> Shader::Create(const std::string& vertexFile, const std::string& fragFile)
+    {
+        return std::make_shared<GLShader>(vertexFile, fragFile);
+    }
+
     void ShaderManager::Add(const std::string& name, const std::shared_ptr<Shader>& shader)
     {
         EGC_ASSERT_MSG(!IsExists(name), "Shader already Exists");

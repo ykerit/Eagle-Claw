@@ -10,6 +10,7 @@ namespace EagleClaw
     {
     public:
         GLShader(const std::string& filepath);
+        GLShader(const std::string& vertFile, const std::string& fragFile);
         GLShader(const std::string& name, const std::string& vertSrc, const std::string& fragmentSrc);
         ~GLShader();
         void Bind() const override;

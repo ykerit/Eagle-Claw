@@ -9,25 +9,39 @@ namespace EagleClaw
     GLShader::GLShader(const std::string& filepath)
     {
         std::string source = ReadFile(filepath);
-        auto shader        = PreProcess(source);
+        auto shader = PreProcess(source);
         Compile(shader);
 
         auto lastSlash = filepath.find_last_of("/\\");
-        lastSlash      = lastSlash == std::string::npos ? 0 : lastSlash + 1;
-        auto lastDot   = filepath.rfind(".");
-        auto count     = lastDot == std::string::npos ? filepath.size() - lastSlash : lastDot - lastSlash;
-        name_          = filepath.substr(lastSlash, count);
+        lastSlash = lastSlash == std::string::npos ? 0 : lastSlash + 1;
+        auto lastDot = filepath.rfind(".");
+        auto count = lastDot == std::string::npos ? filepath.size() - lastSlash : lastDot - lastSlash;
+        name_ = filepath.substr(lastSlash, count);
+    }
+
+    GLShader::GLShader(const std::string& vertFile, const std::string& fragFile) { 
+        std::string vert_source = ReadFile(vertFile);
+        std::string frag_source = ReadFile(fragFile);
+        std::unordered_map<GLenum, std::string> sources;
+        sources[GL_VERTEX_SHADER] = vert_source;
+        sources[GL_FRAGMENT_SHADER] = frag_source;
+        Compile(sources);
+        auto lastSlash = vertFile.find_last_of("/\\");
+        lastSlash = lastSlash == std::string::npos ? 0 : lastSlash + 1;
+        auto lastDot = vertFile.rfind(".");
+        auto count = lastDot == std::string::npos ? vertFile.size() - lastSlash : lastDot - lastSlash;
+        name_ = vertFile.substr(lastSlash, count);
     }
 
     GLShader::GLShader(const std::string& name, const std::string& vertSrc, const std::string& fragmentSrc) : name_(name)
     {
         std::unordered_map<GLenum, std::string> sources;
-        sources[GL_VERTEX_SHADER]   = vertSrc;
+        sources[GL_VERTEX_SHADER] = vertSrc;
         sources[GL_FRAGMENT_SHADER] = fragmentSrc;
         Compile(sources);
     }
 
-    GLShader::~GLShader() { GLCALL(glDeleteShader(rendererID_)); }
+    GLShader::~GLShader() { GLCALL(glDeleteProgram(rendererID_)); }
 
     void GLShader::Bind() const { GLCALL(glUseProgram(rendererID_)); }
 
@@ -88,13 +102,13 @@ namespace EagleClaw
     {
         std::unordered_map<GLenum, std::string> shaderSources;
         const char* typeToken = "#type";
-        size_t typeTokenLen   = strlen(typeToken);
-        size_t pos            = source.find(typeToken, 0);
+        size_t typeTokenLen = strlen(typeToken);
+        size_t pos = source.find(typeToken, 0);
         while (pos != std::string::npos)
         {
             size_t eof = source.find_first_of("\r\n", pos);
             EGC_ASSERT_MSG(eof != std::string::npos, "Synatx error");
-            size_t begin     = pos + typeTokenLen + 1;
+            size_t begin = pos + typeTokenLen + 1;
             std::string type = source.substr(begin, eof - begin);
             EGC_ASSERT(GetTypeFromStr(type));
             size_t nextLinePos = source.find_last_not_of("\r\n", eof);
@@ -114,10 +128,10 @@ namespace EagleClaw
         size_t glShaderIdx = 0;
         for (auto& kv : shaderSrc)
         {
-            GLenum type               = kv.first;
+            GLenum type = kv.first;
             const std::string& source = kv.second;
-            GLuint shader             = glCreateShader(type);
-            const GLchar* sourceCstr  = source.c_str();
+            GLuint shader = glCreateShader(type);
+            const GLchar* sourceCstr = source.c_str();
             GLCALL(glShaderSource(shader, 1, &sourceCstr, 0));
             GLCALL(glCompileShader(shader));
 

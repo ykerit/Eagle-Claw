@@ -9,7 +9,7 @@ namespace EagleClaw
     GLTexture::GLTexture(const size_t width, const size_t height) : width_(width), height_(height)
     {
         internalFormat_ = GL_RGBA;
-        dataFormat_     = GL_RGBA;
+        dataFormat_ = GL_RGBA;
 
         GLCALL(glCreateTextures(GL_TEXTURE_2D, 1, &rendererID));
         GLCALL(glTextureStorage2D(rendererID, 1, internalFormat_, width_, height_));
@@ -34,16 +34,16 @@ namespace EagleClaw
         if (channels == 4)
         {
             internalFormat = GL_RGBA8;
-            dataFormat     = GL_RGBA;
+            dataFormat = GL_RGBA;
         }
         else if (channels == 3)
         {
             internalFormat = GL_RGB8;
-            dataFormat     = GL_RGB;
+            dataFormat = GL_RGB;
         }
 
         internalFormat_ = internalFormat;
-        dataFormat_     = dataFormat;
+        dataFormat_ = dataFormat;
 
         EGC_ASSERT_MSG(internalFormat_ & dataFormat_, "Format not supported");
 
