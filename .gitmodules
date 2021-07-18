@@ -1,3 +1,12 @@
-[submodule "EagleClaw/vendor/spdlog"]
-	path = EagleClaw/vendor/spdlog
+[submodule ".\\GRender\\third_party\\glm"]
+	path = .\\GRender\\third_party\\glm
+	url = https://github.com/g-truc/glm.git
+[submodule ".\\GRender\\third_party\\glfw"]
+	path = .\\GRender\\third_party\\glfw
+	url = https://github.com/glfw/glfw.git
+[submodule ".\\GRender\\third_party\\spdlog"]
+	path = .\\GRender\\third_party\\spdlog
 	url = https://github.com/gabime/spdlog.git
+[submodule ".\\GRender\\third_party\\imgui"]
+	path = .\\GRender\\third_party\\imgui
+	url = https://github.com/ocornut/imgui.git

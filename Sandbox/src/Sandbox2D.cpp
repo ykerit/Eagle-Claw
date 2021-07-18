@@ -3,11 +3,7 @@
 Sandbox2D::Sandbox2D() : Layer("Sandbox2D")
 {
     vertexArray_ = EagleClaw::VertexArray::Create();
-    float postion[] = { 
-        -0.5f, -0.5f, 0.0f, 
-         0.5f, -0.5f, 0.0f, 
-         0.0f,  0.5f, 0.0f
-    };
+    float postion[] = { -0.5f, -0.5f, 0.0f, 0.5f, -0.5f, 0.0f, 0.0f, 0.5f, 0.0f };
     auto buffer = EagleClaw::VertexBuffer::Create(postion, sizeof(postion));
     EagleClaw::BufferLayout layout = { { EagleClaw::BufferDataType::Float3, "a_Position" } };
     buffer->SetLayout(layout);
@@ -16,7 +12,7 @@ Sandbox2D::Sandbox2D() : Layer("Sandbox2D")
     auto indexBuffer = EagleClaw::IndexBuffer::Create(indices, 3);
     vertexArray_->SetIndexBuffer(indexBuffer);
     shader_ = EagleClaw::Shader::Create("assets/shaders/triangle_vert.glsl", "assets/shaders/triangle_frag.glsl");
-}                             
+}
 
 void Sandbox2D::OnAttach() { }
 

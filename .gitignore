@@ -1,11 +1,6 @@
 .vs
-OpenGL/Debug
-Debug
-bin
-bin-int
-!vendor/premake/bin/
-
 .vs/
+build
 **.sln
 **.vcxproj
 **.vcxproj.filters

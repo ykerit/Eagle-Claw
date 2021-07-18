@@ -2,6 +2,7 @@
 #include <EagleClaw/Core/EntryPoint.h>
 
 #include "Sandbox2D.h"
+#include "math.h"
 
 class Sandbox : public EagleClaw::Application
 {
