@@ -4,7 +4,9 @@
 #include "GL/GLRendererAPI.h"
 #include <memory>
 
-namespace GRender
+namespace GRender {
+std::unique_ptr<RendererAPI> RendererAPI::Create()
 {
-    std::unique_ptr<RendererAPI> RendererAPI::Create() { return std::make_unique<GLRendererAPI>(); }
-}  // namespace GRender
+    return std::make_unique<GLRendererAPI>();
+}
+} // namespace GRender

@@ -5,16 +5,16 @@
 #include <glfw/glfw3.h>
 
 namespace GRender {
-    class GLContext : public GraphicsContext
-    {
-    public:
-        GLContext(GLFWwindow* windowHandle);
+class GLContext : public GraphicsContext
+{
+public:
+    GLContext(GLFWwindow *windowHandle);
 
-        void Init() override;
-        virtual void SwapBuffers() override;
+    void Init() override;
+    virtual void SwapBuffers() override;
 
-    private:
-        GLFWwindow* windowHandle_;
-    };
+private:
+    GLFWwindow *windowHandle_;
+};
 
 } // namespace GRender

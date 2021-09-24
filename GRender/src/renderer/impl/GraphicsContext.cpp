@@ -3,10 +3,9 @@
 
 #include <memory>
 
-namespace GRender
+namespace GRender {
+std::unique_ptr<GraphicsContext> GraphicsContext::Create(void *window)
 {
-    std::unique_ptr<GraphicsContext> GraphicsContext::Create(void* window)
-    {
-        return std::make_unique<GLContext>(static_cast<GLFWwindow*>(window));
-    }
-}  // namespace GRender
+    return std::make_unique<GLContext>(static_cast<GLFWwindow *>(window));
+}
+} // namespace GRender

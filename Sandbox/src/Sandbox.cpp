@@ -1,15 +1,19 @@
-#include <EagleClaw.h>
-#include <EagleClaw/Core/EntryPoint.h>
-
 #include "Sandbox2D.h"
-#include "math.h"
+#include "core/EntryPoint.h"
 
-class Sandbox : public EagleClaw::Application
+class Sandbox : public GRender::Application
 {
 public:
-    Sandbox() : Application("Sandbox") { PushLayerOverlay(new Sandbox2D()); }
+    Sandbox()
+        : Application("Sandbox")
+    {
+        PushLayerOverlay(new Sandbox2D());
+    }
 
-    ~Sandbox() { }
+    ~Sandbox() {}
 };
 
-EagleClaw::Application* EagleClaw::CreateApplication() { return new Sandbox(); }
+GRender::Application *GRender::CreateApplication()
+{
+    return new Sandbox();
+}

@@ -4,7 +4,9 @@
 
 #include <memory>
 
-namespace GRender
+namespace GRender {
+VertexArray::VAOPtr VertexArray::Create()
 {
-    VertexArray::VAOPtr VertexArray::Create() { return std::make_shared<GLVertexArray>(); }
-}  // namespace GRender
+    return std::make_shared<GLVertexArray>();
+}
+} // namespace GRender

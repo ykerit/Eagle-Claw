@@ -5,45 +5,53 @@
 #include "core/window.h"
 #include "renderer/GraphicsContext.h"
 
-namespace GRender
+namespace GRender {
+class GWindow : public Window
 {
-    class GWindow : public Window
+public:
+    GWindow(const WindowProps &windowProps);
+    ~GWindow();
+
+    void OnUpdate() override;
+
+    const size_t GetWidth() const override
     {
-    public:
-        GWindow(const WindowProps& windowProps);
-        ~GWindow();
+        return meta_.width;
+    }
 
-        void OnUpdate() override;
+    const size_t GetHeight() const override
+    {
+        return meta_.height;
+    }
 
-        const size_t GetWidth() const override { return meta_.width; }
+    void SetEventCallback(const EventCallback &callback) override;
 
-        const size_t GetHeight() const override { return meta_.height; }
+    void SetVSync(bool enabled) override;
 
-        void SetEventCallback(const EventCallback& callback) override;
+    bool IsVSync() const override;
 
-        void SetVSync(bool enabled) override;
+    void *GetNaiveWindow() const override
+    {
+        return window_;
+    }
 
-        bool IsVSync() const override;
+private:
+    void Init(const WindowProps &windowProps);
+    void ShutDown();
 
-        void* GetNaiveWindow() const override { return window_; }
+    struct WindowMeta
+    {
+        size_t width;
+        size_t height;
+        std::string title;
+        bool enableVSync;
 
-    private:
-        void Init(const WindowProps& windowProps);
-        void ShutDown();
-
-        struct WindowMeta
-        {
-            size_t width;
-            size_t height;
-            std::string title;
-            bool enableVSync;
-
-            Window::EventCallback callback;
-        };
-
-        std::unique_ptr<GraphicsContext> context_;
-        GLFWwindow* window_;
-        WindowMeta meta_;
+        Window::EventCallback callback;
     };
 
-}  // namespace GRender
+    std::unique_ptr<GraphicsContext> context_;
+    GLFWwindow *window_;
+    WindowMeta meta_;
+};
+
+} // namespace GRender

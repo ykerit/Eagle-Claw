@@ -1,8 +1,14 @@
 #pragma once
 
-#include "EagleClaw.h"
+#include "core/Application.h"
+#include "core/Event.h"
+#include "renderer/Shader.h"
+#include "renderer/VertexArray.h"
+#include "renderer/Texture.h"
+#include "renderer/RendererCommand.h"
+#include "renderer/Renderer.h"
 
-class Sandbox2D : public EagleClaw::Layer
+class Sandbox2D : public GRender::Layer
 {
 public:
     Sandbox2D();
@@ -13,11 +19,11 @@ public:
 
     void OnUpdate() override;
     void OnImGuiRender() override;
-    void OnEvent(EagleClaw::Event& event) override;
+    void OnEvent(GRender::Event &event) override;
 
 private:
-    std::shared_ptr<EagleClaw::VertexArray> vertexArray_;
-    std::shared_ptr<EagleClaw::Shader> shader_;
-    std::shared_ptr<EagleClaw::Texture> texture_;
-    glm::vec4 squareColor = { 0.2f, 0.3f, 0.8f, 1.0f };
+    std::shared_ptr<GRender::VertexArray> vertexArray_;
+    std::shared_ptr<GRender::Shader> shader_;
+    std::shared_ptr<GRender::Texture> texture_;
+    glm::vec4 squareColor = {0.2f, 0.3f, 0.8f, 1.0f};
 };

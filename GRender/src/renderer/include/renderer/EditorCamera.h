@@ -7,7 +7,6 @@ namespace GRender {
 class EditorCamera : public Camera
 {
 public:
-
 };
 
-}
+} // namespace GRender

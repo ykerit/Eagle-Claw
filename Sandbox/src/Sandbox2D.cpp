@@ -1,33 +1,35 @@
 #include "Sandbox2D.h"
 
-Sandbox2D::Sandbox2D() : Layer("Sandbox2D")
+Sandbox2D::Sandbox2D()
+    : Layer("Sandbox2D")
 {
-    vertexArray_ = EagleClaw::VertexArray::Create();
-    float postion[] = { -0.5f, -0.5f, 0.0f, 0.5f, -0.5f, 0.0f, 0.0f, 0.5f, 0.0f };
-    auto buffer = EagleClaw::VertexBuffer::Create(postion, sizeof(postion));
-    EagleClaw::BufferLayout layout = { { EagleClaw::BufferDataType::Float3, "a_Position" } };
+    vertexArray_ = GRender::VertexArray::Create();
+    float postion[] = {-0.5f, -0.5f, 0.0f, 0.5f, -0.5f, 0.0f, 0.0f, 0.5f, 0.0f};
+    auto buffer = GRender::VertexBuffer::Create(postion, sizeof(postion));
+    GRender::BufferLayout layout = {{GRender::BufferDataType::Float3, "a_Position"}};
     buffer->SetLayout(layout);
     vertexArray_->AddVertexBuffer(buffer);
-    uint32_t indices[] = { 0, 1, 2 };
-    auto indexBuffer = EagleClaw::IndexBuffer::Create(indices, 3);
+    uint32_t indices[] = {0, 1, 2};
+    auto indexBuffer = GRender::IndexBuffer::Create(indices, 3);
     vertexArray_->SetIndexBuffer(indexBuffer);
-    shader_ = EagleClaw::Shader::Create("assets/shaders/triangle_vert.glsl", "assets/shaders/triangle_frag.glsl");
+    shader_ = GRender::Shader::Create("C:\\Users\\13186\\source\\repos\\GRender\\Sandbox\\assets\\shaders\\triangle_frag.glsl",
+        "C:\\Users\\13186\\source\\repos\\GRender\\Sandbox\\assets\\shaders\\triangle_frag.glsl");
 }
 
-void Sandbox2D::OnAttach() { }
+void Sandbox2D::OnAttach() {}
 
-void Sandbox2D::OnDetach() { }
+void Sandbox2D::OnDetach() {}
 
 void Sandbox2D::OnUpdate()
 {
-    EagleClaw::RendererCommand::SetClearColor({ 0.1f, 0.1f, 0.1f, 1.0f });
-    EagleClaw::RendererCommand::Clear();
+    GRender::RendererCommand::SetClearColor({0.1f, 0.1f, 0.1f, 1.0f});
+    GRender::RendererCommand::Clear();
 
-    EagleClaw::Renderer::BeginScence();
-    EagleClaw::Renderer::Submit(shader_, vertexArray_);
-    EagleClaw::Renderer::EndScence();
+    GRender::Renderer::BeginScence();
+    GRender::Renderer::Submit(shader_, vertexArray_);
+    GRender::Renderer::EndScence();
 }
 
-void Sandbox2D::OnImGuiRender() { }
+void Sandbox2D::OnImGuiRender() {}
 
-void Sandbox2D::OnEvent(EagleClaw::Event& event) { }
+void Sandbox2D::OnEvent(GRender::Event &event) {}

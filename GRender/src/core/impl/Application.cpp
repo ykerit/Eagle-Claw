@@ -1,64 +1,70 @@
 #include "core/Application.h"
 #include "renderer/Renderer.h"
 
-namespace GRender
+namespace GRender {
+Application *Application::instance_ = nullptr;
+
+Application::Application(const std::string &name)
 {
-    Application* Application::instance_ = nullptr;
+    EGC_ASSERT_MSG(!instance_, "Application already exists");
+    instance_ = this;
+    window_ = Window::Create(WindowProps(name));
+    window_->SetEventCallback(BIND_EVENT_FUNC(Application::OnEvent));
+    Renderer::Init();
+}
 
-    Application::Application(const std::string& name)
+Application::~Application()
+{
+    Renderer::ShutDown();
+}
+
+void Application::OnEvent(Event &event)
+{
+    EventDispatcher dispatcher(event);
+    dispatcher.Dispatch<WindowCloseEvent>(BIND_EVENT_FUNC(Application::OnWindowClose));
+    dispatcher.Dispatch<WindowResizeEvent>(BIND_EVENT_FUNC(Application::OnWindowResize));
+
+    for (auto it = stack_.rbegin(); it != stack_.rend(); ++it)
     {
-        EGC_ASSERT_MSG(!instance_, "Application already exists");
-        instance_ = this;
-        window_ = Window::Create(WindowProps(name));
-        window_->SetEventCallback(BIND_EVENT_FUNC(Application::OnEvent));
-        Renderer::Init();
+        if (event.handled)
+            break;
+        (*it)->OnEvent(event);
     }
+}
 
-    Application::~Application() { Renderer::ShutDown(); }
+void Application::PushLayer(Layer *layer) {}
 
-    void Application::OnEvent(Event& event)
+void Application::PushLayerOverlay(Layer *layer)
+{
+    stack_.PushLayerOverlay(layer);
+    layer->OnAttach();
+}
+
+void Application::Run()
+{
+    while (running_)
     {
-        EventDispatcher dispatcher(event);
-        dispatcher.Dispatch<WindowCloseEvent>(BIND_EVENT_FUNC(Application::OnWindowClose));
-        dispatcher.Dispatch<WindowResizeEvent>(BIND_EVENT_FUNC(Application::OnWindowResize));
-
-        for (auto it = stack_.rbegin(); it != stack_.rend(); ++it)
+        // User Interface frame update
         {
-            if (event.handled)
-                break;
-            (*it)->OnEvent(event);
-        }
-    }
-
-    void Application::PushLayer(Layer* layer) { }
-
-    void Application::PushLayerOverlay(Layer* layer)
-    {
-        stack_.PushLayerOverlay(layer);
-        layer->OnAttach();
-    }
-
-    void Application::Run()
-    {
-        while (running_)
-        {
+            for (auto &layer : stack_)
             {
-                for (auto& layer : stack_)
-                {
-                    layer->OnUpdate();
-                }
+                layer->OnUpdate();
             }
-            // ImGui
-            window_->OnUpdate();
         }
+        // ImGui update
+        window_->OnUpdate();
     }
+}
 
-    bool Application::OnWindowClose(WindowCloseEvent& e)
-    {
-        running_ = false;
-        return true;
-    }
+bool Application::OnWindowClose(WindowCloseEvent &e)
+{
+    running_ = false;
+    return true;
+}
 
-    bool Application::OnWindowResize(WindowResizeEvent& e) { return false; }
+bool Application::OnWindowResize(WindowResizeEvent &e)
+{
+    return false;
+}
 
-}  // namespace GRender
+} // namespace GRender

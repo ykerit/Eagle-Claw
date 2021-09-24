@@ -6,38 +6,46 @@
 #include "core/LayerStack.h"
 #include "core/window.h"
 
-int main();
+int main(int argc, char **argv);
 
-namespace GRender
+namespace GRender {
+class Application
 {
-    class Application
+public:
+    Application(const std::string &name);
+
+    virtual ~Application();
+
+    void OnEvent(Event &event);
+    void PushLayer(Layer *layer);
+    void PushLayerOverlay(Layer *layer);
+
+    Window &GetWindow()
     {
-    public:
-        Application(const std::string& name);
+        return *window_;
+    }
 
-        virtual ~Application();
+    void Close()
+    {
+        running_ = false;
+    }
+    void Run();
 
-        void OnEvent(Event& event);
-        void PushLayer(Layer* layer);
-        void PushLayerOverlay(Layer* layer);
+    static Application &Get()
+    {
+        return *instance_;
+    }
 
-        Window& GetWindow() { return *window_; }
+private:
+    bool OnWindowClose(WindowCloseEvent &e);
+    bool OnWindowResize(WindowResizeEvent &e);
 
-        void Close() { running_ = false; }
-        void Run();
+    std::unique_ptr<Window> window_;
+    LayerStack stack_;
+    bool running_ = true;
+    static Application *instance_;
+    friend int main(int argc, char **argv);
+};
 
-        static Application& Get() { return *instance_; }
-
-    private:
-        bool OnWindowClose(WindowCloseEvent& e);
-        bool OnWindowResize(WindowResizeEvent& e);
-
-        std::unique_ptr<Window> window_;
-        LayerStack stack_;
-        bool running_ = true;
-        static Application* instance_;
-        friend int ::main();
-    };
-
-    Application* CreateApplication();
-}  // namespace GRender
+Application *CreateApplication();
+} // namespace GRender

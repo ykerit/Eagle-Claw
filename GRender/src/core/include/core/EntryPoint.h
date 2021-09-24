@@ -1,11 +1,14 @@
 #pragma once
 
-extern GRender::Application* GRender::CreateApplication();
+#include "core/Base.h"
+#include "core/Application.h"
 
-int main()
+extern GRender::Application *GRender::CreateApplication();
+
+int main(int argc, char **argv)
 {
     GRender::Log::Init();
-    GRender::Log::GetcoreLog()->warn("Initalized Log!");
+    GRender::Log::GetCoreLog()->warn("Initalized Log!");
     GRender::Log::GetAppLog()->info("Initalized Log!");
     auto app = GRender::CreateApplication();
     app->Run();
